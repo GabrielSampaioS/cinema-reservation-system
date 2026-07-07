@@ -5,9 +5,9 @@ export default function seatsRoutes(){
 
     //const controller = new Controller(repository)
 
-    router.get("/:seatId")
+/*    router.get("/:seatId")
     router.patch("/:seatId")
-    router.delete("/:seatId")
+    router.delete("/:seatId")*/
 
     return router;
 }

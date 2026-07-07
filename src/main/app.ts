@@ -1,32 +1,38 @@
 import express from "express";
 import cors from "cors";
+import dotenv from "dotenv";
 
 
-import bookingsRoutes from "../routes/bookings.routes";
-import clientsRoutes from "../routes/clients.routes";
-import moviesRoutes from "../routes/movies.routes";
-import roomsRoutes from "../routes/rooms.routes";
-import seatsRoutes from "../routes/seats.routes";
-import theatresRoutes from "../routes/theatres.routes";
-import sessionsRoutes from "../routes/sessions.routes";
+import bookingsRoutes from "../infrastructure/http/routes/bookings.routes";
+import clientsRoutes from "../infrastructure/http/routes/clients.routes";
+import moviesRoutes from "../infrastructure/http/routes/movies.routes";
+import roomsRoutes from "../infrastructure/http/routes/rooms.routes";
+import seatsRoutes from "../infrastructure/http/routes/seats.routes";
+import theatresRoutes from "../infrastructure/http/routes/theatres.routes";
+import sessionsRoutes from "../infrastructure/http/routes/sessions.routes";
 
-export default function criarApp() {
-    const app = express()
+import { TheatreController } from "../infrastructure/http/controllers/TheatreController";
+
+interface Controllers {
+    theatreController: TheatreController;
+}
+
+export default function criarApp({
+    theatreController,
+}: Controllers) {
+    const app = express();
+    dotenv.config();
+
     app.use(cors());
     app.use(express.json());
 
-    // =======================
-    // Importação das rotas
-    // =======================
+    app.use("/bookings", bookingsRoutes());
+    app.use("/clientes", clientsRoutes());
+    app.use("/movies", moviesRoutes());
+    app.use("/rooms", roomsRoutes());
+    app.use("/seats", seatsRoutes());
+    app.use("/sessions", sessionsRoutes());
 
-    app.use("/bookings", bookingsRoutes())
-    app.use("/clientes", clientsRoutes())
-    app.use("/movies", moviesRoutes())
-    app.use("/rooms", roomsRoutes())
-    app.use("/seats", seatsRoutes())
-    app.use("/sessions", sessionsRoutes())
-    app.use("/theatres", theatresRoutes())
-    
-
+    app.use("/theatres", theatresRoutes(theatreController));
     return app;
 }

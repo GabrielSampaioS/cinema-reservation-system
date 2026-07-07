@@ -1,0 +1,101 @@
+generator client {
+  provider = "prisma-client"
+  output   = "../src/generated/prisma"
+}
+
+datasource db {
+  provider = "postgresql"
+}
+
+model Client {
+  idClient Int @id @default(autoincrement())
+  name String
+  passwordHash String
+  email String @unique
+  createdAt DateTime @default(now())
+
+  bookings Booking[]
+}
+
+model Theatre {
+  idTheatre Int @id @default(autoincrement())
+  name String
+  latitude Float
+  longitude Float
+  createdAt DateTime @default(now())
+
+  rooms Room[]
+}
+
+model Room{
+  idRoom Int @id @default(autoincrement())
+  theatreId Int 
+  name String
+  createdAt DateTime @default(now())
+
+  theatre Theatre @relation(fields: [theatreId], references: [idTheatre])
+
+  seats Seat[]
+  sessions Session[]
+}
+
+model Seat{
+  idSeat Int @id @default(autoincrement())
+  roomId Int 
+  row Int
+  number Int
+  createdAt DateTime @default(now())
+
+  room Room @relation(fields: [roomId], references: [idRoom])  
+  bookings Booking[]
+}
+
+
+model Movie{
+  idMovie Int @id @default(autoincrement())
+  title String 
+  description String
+  duration Int
+  createdAt DateTime @default(now())
+
+  sessions Session[]
+}
+
+model Session {
+  idSession Int @id @default(autoincrement())
+  movieId Int 
+  roomId Int
+  startTime DateTime
+  price Decimal
+  createdAt DateTime @default(now())
+
+  movie Movie @relation(fields: [movieId], references: [idMovie])
+  room Room @relation(fields: [roomId], references: [idRoom])
+
+  bookings Booking[]
+
+}
+
+model Status  { // trocar por enum ????
+  idStatus Int @id @default(autoincrement())
+  description String
+  createdAt DateTime @default(now())
+
+  bookings Booking []
+}
+
+model Booking  {
+  idBooking Int @id @default(autoincrement())
+  clientId Int 
+  sessionId  Int
+  seatId Int
+  statusId Int
+  expiresAt DateTime
+  createdAt DateTime @default(now())
+
+  client Client @relation(fields: [clientId], references: [idClient])
+  session Session @relation(fields: [sessionId], references: [idSession])
+  seat Seat @relation(fields: [seatId], references: [idSeat])
+  status Status @relation(fields: [statusId], references: [idStatus])
+
+}

@@ -1,9 +1,9 @@
 import express from "express";
 
-export default function bookingsRoutes() {
+export default function bookingsRoutes(
+) {
     const router = express.Router();
-
-    router.post("/");
+    /*router.post("/",);
     router.get("/");
 
     router.get("/:bookingId");
@@ -11,7 +11,7 @@ export default function bookingsRoutes() {
     router.patch("/:bookingId/confirm");
     router.patch("/:bookingId/cancel");
 
-    router.delete("/:bookingId");
+    router.delete("/:bookingId");*/
 
     return router;
 }

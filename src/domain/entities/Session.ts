@@ -1,7 +1,7 @@
-import { Booking } from "../../../modules/booking/domain/entities/Booking";
+//import { Booking } from "/../../modules/booking/domain/entities/Booking";
 
 export class Session{
-    private bookings: Booking[] = [];
+    //private bookings: Booking[] = [];
     
     constructor(
         public readonly id: string,
