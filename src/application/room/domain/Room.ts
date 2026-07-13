@@ -1,4 +1,4 @@
-import { Seat } from "./Seat";
+import { Seat } from "../../../domain/entities/Seat";
 
 export class Room {
     constructor(

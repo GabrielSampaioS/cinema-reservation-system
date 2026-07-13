@@ -1,17 +1,18 @@
-import dotenv from "dotenv"; 
+import dotenv from "dotenv";
 import criarApp from "./app";
-import { PrismaTheatreRepository } from "../infrastructure/database/prisma/repositories/PrismaTheatreRepository";
-import { CreateTheatreUseCase } from "../application/use-cases/theatre/CreateTheatreUseCase";
-import { TheatreController } from "../infrastructure/http/controllers/TheatreController";
+//import { PrismaTheatreRepository } from "../application/theatre/infrastructure/PrismaTheatreRepository";
+
+import { makeTheatreController } from "./factories/makeTheatreController"
+import { makeRoomController } from "./factories/makeRoomControlle"
 
 dotenv.config()
 
-const theatreRepository = new PrismaTheatreRepository();
-const createTheatreUseCase = new CreateTheatreUseCase(theatreRepository);
-const theatreController = new TheatreController(
-    createTheatreUseCase,
-    // ...
-);
+//const theatreRepository = new PrismaTheatreRepository();
+
+
+//factories
+const theatreController = makeTheatreController()
+const roomController = makeRoomController()
 
 
 async function start() {
@@ -19,7 +20,7 @@ async function start() {
 
     //implementação das interfaces
 
-    const app = criarApp({theatreController})
+    const app = criarApp({ theatreController, roomController })
 
     app.listen(
         process.env.PORT, () => {

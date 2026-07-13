@@ -1,6 +1,6 @@
 import { Theatre } from "@prisma/client";
-import { CreateTheatreDTO } from "../../application/use-cases/dto/CreateTheatreDTO";
-import { UpdateTheatreDTO } from "../../application/use-cases/dto/UpdateTheatreDTO";
+import { CreateTheatreDTO } from "../dto/CreateTheatreDTO";
+import { UpdateTheatreDTO } from "../dto/UpdateTheatreDTO";
 
 export interface TheatreRepository {
   create(data: CreateTheatreDTO): Promise<Theatre>;

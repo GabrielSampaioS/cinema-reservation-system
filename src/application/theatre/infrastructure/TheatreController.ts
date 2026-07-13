@@ -1,26 +1,21 @@
 import { Request, Response } from "express";
 
-import { CreateTheatreUseCase } from "../../../application/use-cases/theatre/CreateTheatreUseCase";
-/*import { GetAllTheatresUseCase } from "@/application/use-cases/theatre/GetAllTheatresUseCase";
-import { GetTheatreByIdUseCase } from "@/application/use-cases/theatre/GetTheatreByIdUseCase";
-import { UpdateTheatreUseCase } from "@/application/use-cases/theatre/UpdateTheatreUseCase";
-import { DeleteTheatreUseCase } from "@/application/use-cases/theatre/DeleteTheatreUseCase";
-import { GetNearbyTheatresUseCase } from "@/application/use-cases/theatre/GetNearbyTheatresUseCase";
-import { CreateRoomUseCase } from "@/application/use-cases/theatre/CreateRoomUseCase";
-import { GetRoomsByTheatreUseCase } from "@/application/use-cases/theatre/GetRoomsByTheatreUseCase";*/
+import { CreateTheatreUseCase } from "../use-cases/CreateTheatreUseCase";
+import { GetAllTheatresUseCase } from "../use-cases/GetAllTheatresUseCase";
+import { GetTheatreByIdUseCase } from "../use-cases/GetTheatreByIdUseCase";
+import { UpdateTheatreUseCase } from "../use-cases//UpdateTheatreUseCase";
+import { DeleteTheatreUseCase } from "../use-cases//DeleteTheatreUseCase";
+import { GetNearbyTheatresUseCase } from "../use-cases/GetNearbyTheatresUseCase";
 
 export class TheatreController {
-    //todo> criar uma factory para injetar apenas 1 
     constructor(
         private readonly createTheatreUseCase: CreateTheatreUseCase,
-        /*private readonly getAllTheatresUseCase: GetAllTheatresUseCase,
+        private readonly getAllTheatresUseCase: GetAllTheatresUseCase,
         private readonly getTheatreByIdUseCase: GetTheatreByIdUseCase,
         private readonly updateTheatreUseCase: UpdateTheatreUseCase,
         private readonly deleteTheatreUseCase: DeleteTheatreUseCase,
         private readonly getNearbyTheatresUseCase: GetNearbyTheatresUseCase,
-        private readonly createRoomUseCase: CreateRoomUseCase,
-        private readonly getRoomsByTheatreUseCase: GetRoomsByTheatreUseCase*/
-    ) {}
+    ) { }
 
     async create(req: Request, res: Response) {
 
@@ -29,7 +24,7 @@ export class TheatreController {
         return res.status(201).json(theatre);
     }
 
-    /*async findAll(req: Request, res: Response) {
+    async findAll(req: Request, res: Response) {
         const theatres = await this.getAllTheatresUseCase.execute();
 
         return res.status(200).json(theatres);
@@ -57,6 +52,9 @@ export class TheatreController {
     async delete(req: Request, res: Response) {
         const { theatreId } = req.params;
 
+        console.log(theatreId);
+        console.log(Number(theatreId));
+
         await this.deleteTheatreUseCase.execute(Number(theatreId));
 
         return res.sendStatus(204);
@@ -74,24 +72,5 @@ export class TheatreController {
         return res.status(200).json(theatres);
     }
 
-    async createRoom(req: Request, res: Response) {
-        const { theatreId } = req.params;
 
-        const room = await this.createRoomUseCase.execute(
-            Number(theatreId),
-            req.body
-        );
-
-        return res.status(201).json(room);
-    }
-
-    async getRooms(req: Request, res: Response) {
-        const { theatreId } = req.params;
-
-        const rooms = await this.getRoomsByTheatreUseCase.execute(
-            Number(theatreId)
-        );
-
-        return res.status(200).json(rooms);
-    }*/
 }
