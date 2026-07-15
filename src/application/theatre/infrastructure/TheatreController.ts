@@ -52,9 +52,6 @@ export class TheatreController {
     async delete(req: Request, res: Response) {
         const { theatreId } = req.params;
 
-        console.log(theatreId);
-        console.log(Number(theatreId));
-
         await this.deleteTheatreUseCase.execute(Number(theatreId));
 
         return res.sendStatus(204);

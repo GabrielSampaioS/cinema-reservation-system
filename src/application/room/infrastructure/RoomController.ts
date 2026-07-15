@@ -5,45 +5,39 @@ import { GetRoomByIdUseCase } from "../use-cases/GetRoomByIdUseCase";
 import { DeleteRoomUseCase } from "../use-cases/DeleteRoomUseCase";
 import { UpdateRoomUseCase } from "../use-cases/UpdateRoomUseCase";
 
-
-
-
-
 export class RoomController {
-    //todo> criar uma factory para injetar apenas 1 
     constructor(
         private readonly createRoomUseCase: CreateRoomUseCase,
         private readonly deleteRoomUseCase: DeleteRoomUseCase,
         private readonly getRoomByIdUseCase: GetRoomByIdUseCase,
         private readonly updateRoomUseCase: UpdateRoomUseCase,
-
     ) {}
 
     async create(req: Request, res: Response) {
 
-        const room = await this.createRoomUseCase.execute(req.body);
+        const result = await this.createRoomUseCase.execute(req.body);
 
-        return res.status(201).json(room);
+        return res.status(201).json(result);
     }
 
 
    async findByRoomId(req: Request, res: Response) {
         const { roomId } = req.params;
 
-        const room = await this.getRoomByIdUseCase.execute(Number(roomId));
+        const result = await this.getRoomByIdUseCase.execute(Number(roomId));
 
-        return res.status(200).json(room);
+        return res.status(200).json(result);
     }
 
     async update(req: Request, res: Response) {
         const { roomId } = req.params;
 
-        const room = await this.updateRoomUseCase.execute(
+        const result = await this.updateRoomUseCase.execute(
             Number(roomId),
             req.body
         );
 
-        return res.status(200).json(room);
+        return res.status(200).json(result);
     }
 
     async delete(req: Request, res: Response) {
