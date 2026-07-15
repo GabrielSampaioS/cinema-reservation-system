@@ -2,12 +2,12 @@ import { PrismaTheatreRepository } from "../../application/theatre/infrastructur
 
 import { TheatreController } from "../..//application/theatre/infrastructure/TheatreController";
 
-import { CreateTheatreUseCase } from "../..//application/theatre/use-cases/CreateTheatreUseCase";
-import { GetAllTheatresUseCase } from "../..//application/theatre/use-cases/GetAllTheatresUseCase";
-import { GetTheatreByIdUseCase } from "../..//application/theatre/use-cases/GetTheatreByIdUseCase";
-import { UpdateTheatreUseCase } from "../..//application/theatre/use-cases/UpdateTheatreUseCase";
-import { DeleteTheatreUseCase } from "../..//application/theatre/use-cases/DeleteTheatreUseCase";
-import { GetNearbyTheatresUseCase } from "../..//application/theatre/use-cases/GetNearbyTheatresUseCase";
+import { CreateTheatreUseCase } from "../../application/theatre/use-case/CreateTheatreUseCase";
+import { GetAllTheatresUseCase } from "../../application/theatre/use-case/GetAllTheatresUseCase";
+import { GetTheatreByIdUseCase } from "../../application/theatre/use-case/GetTheatreByIdUseCase";
+import { UpdateTheatreUseCase } from "../../application/theatre/use-case/UpdateTheatreUseCase";
+import { DeleteTheatreUseCase } from "../../application/theatre/use-case/DeleteTheatreUseCase";
+import { GetNearbyTheatresUseCase } from "../../application/theatre/use-case/GetNearbyTheatresUseCase";
 
 export function makeTheatreController() {
     const repository = new PrismaTheatreRepository();

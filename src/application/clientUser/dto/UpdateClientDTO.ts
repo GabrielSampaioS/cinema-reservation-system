@@ -1,2 +1,2 @@
-export interface UpdateClientrDTO { 
+export interface UpdateCLientDTO { 
 }

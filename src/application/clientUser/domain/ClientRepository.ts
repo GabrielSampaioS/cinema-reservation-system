@@ -1,6 +1,6 @@
 import { Client } from "@prisma/client";
 import { CreateClientDTO } from "../dto/CreateClientDTO";
-import { UpdateClientrDTO } from "../dto/UpdateClientDTO";
+import { UpdateCLientDTO } from "../dto/UpdateClientDTO";
 
 export interface ClientRepository {
 
@@ -8,7 +8,7 @@ export interface ClientRepository {
     
     findById(id: number): Promise<Client | null>
 
-    update(id: number, data: UpdateClientrDTO): Promise<Client>;
+    update(id: number, data: UpdateCLientDTO): Promise<Client>;
 
     delete(id: number): Promise<void>;
 

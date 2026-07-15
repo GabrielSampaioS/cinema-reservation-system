@@ -1,5 +1,5 @@
 import { TheatreRepository } from "../domain/TheatreRepository";
-import { CreateTheatreDTO } from "../../theatre/dto/CreateTheatreDTO";
+import { CreateTheatreDTO } from "../dto/CreateTheatreDTO";
 
 
 export class CreateTheatreUseCase {

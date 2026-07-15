@@ -1,9 +1,9 @@
 import { Request, Response } from "express";
 
-import { CreateRoomUseCase } from "../use-cases/CreateRoomUseCase";
-import { GetRoomByIdUseCase } from "../use-cases/GetRoomByIdUseCase";                                
-import { DeleteRoomUseCase } from "../use-cases/DeleteRoomUseCase";
-import { UpdateRoomUseCase } from "../use-cases/UpdateRoomUseCase";
+import { CreateRoomUseCase } from "../use-case/CreateRoomUseCase";
+import { GetRoomByIdUseCase } from "../use-case/GetRoomByIdUseCase";                                
+import { DeleteRoomUseCase } from "../use-case/DeleteRoomUseCase";
+import { UpdateRoomUseCase } from "../use-case/UpdateRoomUseCase";
 
 export class RoomController {
     constructor(

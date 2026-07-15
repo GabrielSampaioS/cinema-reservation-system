@@ -2,10 +2,10 @@ import { PrismaRoomRepository } from "../../application/room/infrastructure/Pris
 
 import {RoomController} from "../../application/room/infrastructure/RoomController"
 
-import { CreateRoomUseCase   } from "../../application/room/use-cases/CreateRoomUseCase";
-import { DeleteRoomUseCase } from "../../application/room/use-cases/DeleteRoomUseCase";
-import { GetRoomByIdUseCase } from "../../application/room/use-cases/GetRoomByIdUseCase";
-import { UpdateRoomUseCase } from "../../application/room/use-cases/UpdateRoomUseCase";
+import { CreateRoomUseCase   } from "../../application/room/use-case/CreateRoomUseCase";
+import { DeleteRoomUseCase } from "../../application/room/use-case/DeleteRoomUseCase";
+import { GetRoomByIdUseCase } from "../../application/room/use-case/GetRoomByIdUseCase";
+import { UpdateRoomUseCase } from "../../application/room/use-case/UpdateRoomUseCase";
 
 export function makeRoomController() {
     const repository = new PrismaRoomRepository();

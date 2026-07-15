@@ -1,5 +1,5 @@
 import { TheatreRepository } from "../domain/TheatreRepository";
-import { UpdateTheatreDTO } from "../../theatre/dto/UpdateTheatreDTO";
+import { UpdateTheatreDTO } from "../dto/UpdateTheatreDTO";
 
 
 export class UpdateTheatreUseCase {
