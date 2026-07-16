@@ -4,7 +4,7 @@ import dotenv from "dotenv";
 
 import theatresRoutes from "../application/theatre/infrastructure/theatres.routes";
 import roomsRoutes from "../application/room/infrastructure/rooms.routes";
-import clientsRoutes from "../application/clientUser/infrastructure/cleints.routes"
+import clientsRoutes from "../application/clientUser/infrastructure/Clients.routes"
 import moviesRoutes from "../application/movie/infrastructure/movies.routes";
 
 //TODO

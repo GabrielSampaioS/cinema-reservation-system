@@ -10,3 +10,4 @@ export class UpdateMovieUseCase{
         const result = await this.movieRepository.update(movieId, data)
     }
 }
+
