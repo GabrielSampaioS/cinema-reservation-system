@@ -1,6 +1,6 @@
 import { PrismaSeatRepository } from "../../infrastructure/database/prisma/repositories/PrismaSeatRepository";
 
-import {SeatController} from "../../infrastructure/http/controllers/SeatsController"
+import {SeatController} from "../../infrastructure/http/controllers/SeatController"
 
 import { CreateSeatUseCase   } from "../../application/seat/use-case/CreateSeatUseCase";
 import { DeleteSeatUseCase } from "../../application/seat/use-case/DeleteSeatUseCase";

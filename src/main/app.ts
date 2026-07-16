@@ -2,20 +2,20 @@ import express from "express";
 import cors from "cors";
 import dotenv from "dotenv";
 
-import theatresRoutes from "../infrastructure/http/routes/theatres.routes";
-import roomsRoutes from "../infrastructure/http/routes/rooms.routes";
-import clientsRoutes from "../infrastructure/http/routes/Clients.routes"
-import moviesRoutes from "../infrastructure/http/routes/movies.routes";
-import seatsRoutes from "../infrastructure/http/routes/Seats.routes"
+import theatresRoutes from "../infrastructure/http/routes/theatre.routes";
+import roomsRoutes from "../infrastructure/http/routes/room.routes";
+import clientsRoutes from "../infrastructure/http/routes/client.routes"
+import moviesRoutes from "../infrastructure/http/routes/movie.routes";
+import seatsRoutes from "../infrastructure/http/routes/seat.routes"
 import sessionsRoutes from "../infrastructure/http/routes/session.routes";
-import bookingsRoutes from "../infrastructure/http/routes/bookings.routes";
+import bookingsRoutes from "../infrastructure/http/routes/booking.routes";
 
 
 import { TheatreController } from "../infrastructure/http/controllers/TheatreController";
 import { RoomController } from "../infrastructure/http/controllers/RoomController";
 import { ClientController } from "../infrastructure/http/controllers/ClientController"
 import { MovieController } from "../infrastructure/http/controllers/MovieController"
-import { SeatController } from "../infrastructure/http/controllers/SeatsController"
+import { SeatController } from "../infrastructure/http/controllers/SeatController"
 import { SessionController } from "../infrastructure/http/controllers/SessionController"
 import { BookingController } from "../infrastructure/http/controllers/BookingController"
 

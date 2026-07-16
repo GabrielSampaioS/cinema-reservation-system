@@ -1,9 +1,7 @@
 import express from "express";
 import { ClientController } from "../controllers/ClientController";
 
-export default function clientsRoutes(
-    controller: ClientController
-) {
+export default function clientsRoutes(controller: ClientController) {
 
     const router = express.Router();
 
