@@ -8,9 +8,8 @@ import clientsRoutes from "../application/clientUser/infrastructure/Clients.rout
 import moviesRoutes from "../application/movie/infrastructure/movies.routes";
 import seatsRoutes from "../application//seat/infrastructure/Seats.routes"
 import sessionsRoutes from "../application/session/infrastructure/session.routes";
+import bookingsRoutes from "../application/booking/infrastructure/bookings.routes";
 
-//TODO
-import bookingsRoutes from "../infrastructure/http/routes/bookings.routes";
 
 import { TheatreController } from "../application/theatre/infrastructure/TheatreController";
 import { RoomController } from "../application/room/infrastructure/RoomController";
@@ -18,6 +17,7 @@ import { ClientController } from "../application/clientUser/infrastructure/Clien
 import { MovieController } from "../application/movie/infrastructure/MovieController"
 import { SeatController } from "../application/seat/infrastructure/SeatsController"
 import { SessionController } from "../application/session/infrastructure/SessionController"
+import { BookingController } from "../application/booking/infrastructure/BookingController"
 
 interface Controllers {
     theatreController: TheatreController,
@@ -25,26 +25,27 @@ interface Controllers {
     clientController: ClientController
     movieController: MovieController,
     seatController: SeatController,
-    sessionController: SessionController
+    sessionController: SessionController,
+    bookingController: BookingController
 }
 
 export default function criarApp({
+
     theatreController,
     roomController,
     clientController,
     movieController,
     seatController,
-    sessionController
+    sessionController,
+    bookingController
+
 }: Controllers) {
+    
     const app = express();
     dotenv.config();
 
     app.use(cors());
     app.use(express.json());
-
-
-    app.use("/bookings", bookingsRoutes());
-
 
     app.use("/theatres", theatresRoutes(theatreController));
     app.use("/rooms", roomsRoutes(roomController));
@@ -52,5 +53,7 @@ export default function criarApp({
     app.use("/movies", moviesRoutes(movieController));
     app.use("/seats", seatsRoutes(seatController));
     app.use("/sessions", sessionsRoutes(sessionController));
+    app.use("/bookings", bookingsRoutes(bookingController));
+
     return app;
 }
