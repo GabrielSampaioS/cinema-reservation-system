@@ -6,29 +6,35 @@ import theatresRoutes from "../application/theatre/infrastructure/theatres.route
 import roomsRoutes from "../application/room/infrastructure/rooms.routes";
 import clientsRoutes from "../application/clientUser/infrastructure/Clients.routes"
 import moviesRoutes from "../application/movie/infrastructure/movies.routes";
+import seatsRoutes from "../application//seat/infrastructure/Seats.routes"
+import sessionsRoutes from "../application/session/infrastructure/session.routes";
 
 //TODO
 import bookingsRoutes from "../infrastructure/http/routes/bookings.routes";
-import seatsRoutes from "../infrastructure/http/routes/seats.routes";
-import sessionsRoutes from "../infrastructure/http/routes/sessions.routes";
 
 import { TheatreController } from "../application/theatre/infrastructure/TheatreController";
 import { RoomController } from "../application/room/infrastructure/RoomController";
 import { ClientController } from "../application/clientUser/infrastructure/ClientController"
 import { MovieController } from "../application/movie/infrastructure/MovieController"
+import { SeatController } from "../application/seat/infrastructure/SeatsController"
+import { SessionController } from "../application/session/infrastructure/SessionController"
 
 interface Controllers {
     theatreController: TheatreController,
     roomController: RoomController,
     clientController: ClientController
-    movieController: MovieController
+    movieController: MovieController,
+    seatController: SeatController,
+    sessionController: SessionController
 }
 
 export default function criarApp({
     theatreController,
     roomController,
     clientController,
-    movieController
+    movieController,
+    seatController,
+    sessionController
 }: Controllers) {
     const app = express();
     dotenv.config();
@@ -38,14 +44,13 @@ export default function criarApp({
 
 
     app.use("/bookings", bookingsRoutes());
-    
 
-    app.use("/seats", seatsRoutes());
-    app.use("/sessions", sessionsRoutes());
 
     app.use("/theatres", theatresRoutes(theatreController));
     app.use("/rooms", roomsRoutes(roomController));
     app.use("/clientes", clientsRoutes(clientController));
     app.use("/movies", moviesRoutes(movieController));
+    app.use("/seats", seatsRoutes(seatController));
+    app.use("/sessions", sessionsRoutes(sessionController));
     return app;
 }

@@ -6,6 +6,8 @@ import { makeTheatreController } from "./factories/makeTheatreController"
 import { makeRoomController } from "./factories/makeRoomControlle"
 import { makeClientController } from "./factories/makeClienteControlle"
 import { makeMovieController } from "./factories/makeMovieControlle"
+import { makeSeatController } from "./factories/makeSeatControlle"
+import { makeSessioController } from "./factories/makeSessionControlle"
 
 dotenv.config()
 
@@ -17,6 +19,8 @@ const theatreController = makeTheatreController()
 const roomController = makeRoomController()
 const clientController = makeClientController()
 const movieController = makeMovieController()
+const seatController = makeSeatController()
+const sessionController = makeSessioController()
 
 
 async function start() {
@@ -24,7 +28,7 @@ async function start() {
 
     //implementação das interfaces
 
-    const app = criarApp({ theatreController, roomController, clientController, movieController })
+    const app = criarApp({ theatreController, roomController, clientController, movieController, seatController, sessionController })
 
     app.listen(
         process.env.PORT, () => {
