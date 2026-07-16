@@ -1,11 +1,11 @@
-import { BookingRepository } from "../domain/BookingRepository";
+import { BookingRepository } from "../../../../application/booking/domain/BookingRepository";
 
-import { CreateBookingDTO } from "../dto/CreateBookingDTO";
-import { UpdateBookingDTO } from "../dto/UpdateBookingDTO";
+import { CreateBookingDTO } from "../../../../application/booking/dto/CreateBookingDTO";
+import { UpdateBookingDTO } from "../../../../application/booking/dto/UpdateBookingDTO";
 
 import { Booking } from "@prisma/client";
 
-import { db } from "../../../infrastructure/database/prisma/db";
+import { db } from "../db";
 
 
 

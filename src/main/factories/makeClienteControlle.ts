@@ -1,6 +1,6 @@
-import { PrismaClientRepository } from "../../application/clientUser/infrastructure/PrismaClientRepository";
+import { PrismaClientRepository } from "../../infrastructure/database/prisma/repositories/PrismaClientRepository";
 
-import {ClientController} from "../../application/clientUser/infrastructure/ClientController"
+import {ClientController} from "../../infrastructure/http/controllers/ClientController"
 
 import { CreateClientUseCase   } from "../../application/clientUser/use-case/CreateClientUseCase";
 import { DeleteClientUseCase } from "../../application/clientUser/use-case/DeleteClientUseCase";

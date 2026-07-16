@@ -1,11 +1,11 @@
 import { Request, Response } from "express";
 
-import { CreateTheatreUseCase } from "../use-case/CreateTheatreUseCase";
-import { GetAllTheatresUseCase } from "../use-case/GetAllTheatresUseCase";
-import { GetTheatreByIdUseCase } from "../use-case/GetTheatreByIdUseCase";
-import { UpdateTheatreUseCase } from "../use-case/UpdateTheatreUseCase";
-import { DeleteTheatreUseCase } from "../use-case/DeleteTheatreUseCase";
-import { GetNearbyTheatresUseCase } from "../use-case/GetNearbyTheatresUseCase";
+import { CreateTheatreUseCase } from "../../../application/theatre/use-case/CreateTheatreUseCase";
+import { GetAllTheatresUseCase } from "../../../application/theatre/use-case/GetAllTheatresUseCase";
+import { GetTheatreByIdUseCase } from "../../../application/theatre/use-case/GetTheatreByIdUseCase";
+import { UpdateTheatreUseCase } from "../../../application/theatre/use-case/UpdateTheatreUseCase";
+import { DeleteTheatreUseCase } from "../../../application/theatre/use-case/DeleteTheatreUseCase";
+import { GetNearbyTheatresUseCase } from "../../../application/theatre/use-case/GetNearbyTheatresUseCase";
 
 export class TheatreController {
     constructor(

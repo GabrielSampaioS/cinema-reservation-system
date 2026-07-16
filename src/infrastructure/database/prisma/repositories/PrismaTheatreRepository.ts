@@ -1,7 +1,7 @@
-import { TheatreRepository } from "../domain/TheatreRepository"
-import { CreateTheatreDTO } from "../dto/CreateTheatreDTO"
-import { UpdateTheatreDTO } from "../dto/UpdateTheatreDTO"
-import {db} from "../../../infrastructure/database/prisma/db"
+import { TheatreRepository } from "../../../../application/theatre/domain/TheatreRepository"
+import { CreateTheatreDTO } from "../../../../application/theatre/dto/CreateTheatreDTO"
+import { UpdateTheatreDTO } from "../../../../application/theatre/dto/UpdateTheatreDTO"
+import {db} from "../db"
 import { Theatre } from "@prisma/client";
 
 "@/domain/repositories/TheatreRepository";

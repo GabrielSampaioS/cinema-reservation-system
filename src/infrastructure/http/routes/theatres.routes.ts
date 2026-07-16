@@ -1,5 +1,5 @@
 import express from "express";
-import { TheatreController } from "./TheatreController";
+import { TheatreController } from "../controllers/TheatreController";
 
 export default function theatresRoutes(
     controller: TheatreController

@@ -1,8 +1,8 @@
 import { Client } from "@prisma/client";
-import { ClientRepository } from "../domain/ClientRepository";
-import { CreateClientDTO } from "../dto/CreateClientDTO";
-import { UpdateCLientDTO } from "../dto/UpdateClientDTO";
-import { db } from "../../../infrastructure/database/prisma/db"
+import { ClientRepository } from "../../../../application/clientUser/domain/ClientRepository";
+import { CreateClientDTO } from "../../../../application/clientUser/dto/CreateClientDTO";
+import { UpdateCLientDTO } from "../../../../application/clientUser/dto/UpdateClientDTO";
+import { db } from "../db"
 
 export class PrismaClientRepository implements ClientRepository {
     async create(data: CreateClientDTO): Promise<Client> {

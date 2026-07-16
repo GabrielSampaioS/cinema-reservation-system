@@ -1,8 +1,8 @@
-import { SessionRepository } from "../domain/SessionRepository";
-import { CreateSessionDTO } from "../dto/CreateSessionDTO";
-import { UpdateSessionDTO } from "../dto/UpdateSessionDTO";
+import { SessionRepository } from "../../../../application/session/domain/SessionRepository";
+import { CreateSessionDTO } from "../../../../application/session/dto/CreateSessionDTO";
+import { UpdateSessionDTO } from "../../../../application/session/dto/UpdateSessionDTO";
 
-import { db } from "../../../infrastructure/database/prisma/db";
+import { db } from "../db";
 
 import { Session } from "@prisma/client";
 

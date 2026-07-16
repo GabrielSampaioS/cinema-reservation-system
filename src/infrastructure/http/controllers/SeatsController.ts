@@ -1,10 +1,10 @@
 import { Request, Response } from "express";
 
-import { CreateSeatUseCase } from "../use-case/CreateSeatUseCase"
-import { DeleteSeatUseCase } from "../use-case/DeleteSeatUseCase"
-import { GetSeatByIdUseCase } from "../use-case/GetSeatByIdUseCase"
-import { GetSeatsByRoomUseCase } from "../use-case/GetSeatsByRoomUseCase"
-import { UpdateSeatUseCase } from "../use-case/UpdateSeatUseCase"
+import { CreateSeatUseCase } from "../../../application/seat/use-case/CreateSeatUseCase"
+import { DeleteSeatUseCase } from "../../../application/seat/use-case/DeleteSeatUseCase"
+import { GetSeatByIdUseCase } from "../../../application/seat/use-case/GetSeatByIdUseCase"
+import { GetSeatsByRoomUseCase } from "../../../application/seat/use-case/GetSeatsByRoomUseCase"
+import { UpdateSeatUseCase } from "../../../application/seat/use-case/UpdateSeatUseCase"
 
 
 export class SeatController {

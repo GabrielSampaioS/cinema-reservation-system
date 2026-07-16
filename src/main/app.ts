@@ -2,22 +2,22 @@ import express from "express";
 import cors from "cors";
 import dotenv from "dotenv";
 
-import theatresRoutes from "../application/theatre/infrastructure/theatres.routes";
-import roomsRoutes from "../application/room/infrastructure/rooms.routes";
-import clientsRoutes from "../application/clientUser/infrastructure/Clients.routes"
-import moviesRoutes from "../application/movie/infrastructure/movies.routes";
-import seatsRoutes from "../application//seat/infrastructure/Seats.routes"
-import sessionsRoutes from "../application/session/infrastructure/session.routes";
-import bookingsRoutes from "../application/booking/infrastructure/bookings.routes";
+import theatresRoutes from "../infrastructure/http/routes/theatres.routes";
+import roomsRoutes from "../infrastructure/http/routes/rooms.routes";
+import clientsRoutes from "../infrastructure/http/routes/Clients.routes"
+import moviesRoutes from "../infrastructure/http/routes/movies.routes";
+import seatsRoutes from "../infrastructure/http/routes/Seats.routes"
+import sessionsRoutes from "../infrastructure/http/routes/session.routes";
+import bookingsRoutes from "../infrastructure/http/routes/bookings.routes";
 
 
-import { TheatreController } from "../application/theatre/infrastructure/TheatreController";
-import { RoomController } from "../application/room/infrastructure/RoomController";
-import { ClientController } from "../application/clientUser/infrastructure/ClientController"
-import { MovieController } from "../application/movie/infrastructure/MovieController"
-import { SeatController } from "../application/seat/infrastructure/SeatsController"
-import { SessionController } from "../application/session/infrastructure/SessionController"
-import { BookingController } from "../application/booking/infrastructure/BookingController"
+import { TheatreController } from "../infrastructure/http/controllers/TheatreController";
+import { RoomController } from "../infrastructure/http/controllers/RoomController";
+import { ClientController } from "../infrastructure/http/controllers/ClientController"
+import { MovieController } from "../infrastructure/http/controllers/MovieController"
+import { SeatController } from "../infrastructure/http/controllers/SeatsController"
+import { SessionController } from "../infrastructure/http/controllers/SessionController"
+import { BookingController } from "../infrastructure/http/controllers/BookingController"
 
 interface Controllers {
     theatreController: TheatreController,

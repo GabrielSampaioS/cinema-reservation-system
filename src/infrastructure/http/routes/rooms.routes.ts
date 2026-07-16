@@ -1,5 +1,5 @@
 import express from "express";
-import { RoomController } from "./RoomController";
+import { RoomController } from "../controllers/RoomController";
 
 export default function roomsRoutes(
     controller: RoomController

@@ -1,12 +1,12 @@
 import { Request, Response } from "express";
 
-import { CreateSessionUseCase } from "../use-case/CreateSessionUseCase";
-import { GetAllSessionsUseCase } from "../use-case/GetAllSessionsUseCase";
-import { GetSessionByIdUseCase } from "../use-case/GetSessionByIdUseCase";
-import { UpdateSessionUseCase } from "../use-case/UpdateSessionUseCase";
-import { DeleteSessionUseCase } from "../use-case/DeleteSessionUseCase";
+import { CreateSessionUseCase } from "../../../application/session/use-case/CreateSessionUseCase";
+import { GetAllSessionsUseCase } from "../../../application/session/use-case/GetAllSessionsUseCase";
+import { GetSessionByIdUseCase } from "../../../application/session/use-case/GetSessionByIdUseCase";
+import { UpdateSessionUseCase } from "../../../application/session/use-case/UpdateSessionUseCase";
+import { DeleteSessionUseCase } from "../../../application/session/use-case/DeleteSessionUseCase";
 
-import { GetSessionsByMovieIdUseCase } from "../use-case/GetSessionsByMovieIdUseCase";
+import { GetSessionsByMovieIdUseCase } from "../../../application/session/use-case/GetSessionsByMovieIdUseCase";
 
 
 export class SessionController {

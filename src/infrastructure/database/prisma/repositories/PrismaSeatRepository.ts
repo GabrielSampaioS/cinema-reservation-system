@@ -1,8 +1,8 @@
 import { Seat } from "@prisma/client";
-import { SeatRepository } from "../domain/SeatRepository";
-import { CreateSeatDTO } from "../dto/CreateSeatDTO";
-import { UpdateSeatDTO } from "../dto/UpdateSeatDTO";
-import { db } from "../../../infrastructure/database/prisma/db"
+import { SeatRepository } from "../../../../application/seat/domain/SeatRepository";
+import { CreateSeatDTO } from "../../../../application/seat/dto/CreateSeatDTO";
+import { UpdateSeatDTO } from "../../../../application/seat/dto/UpdateSeatDTO";
+import { db } from "../db"
 
 export class PrismaSeatRepository implements SeatRepository {
 

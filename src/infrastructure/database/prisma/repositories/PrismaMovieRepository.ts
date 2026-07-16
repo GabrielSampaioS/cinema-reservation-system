@@ -1,8 +1,8 @@
 import { Movie } from "@prisma/client";
-import { MovieRepository } from "../domain/MovieRepository";
-import { CreateMovieDTO } from "../dto/CreateMovieDTO";
-import { UpdateMovieDTO } from "../dto/UpdateMovieDTO";
-import { db } from "../../../infrastructure/database/prisma/db"
+import { MovieRepository } from "../../../../application/movie/domain/MovieRepository";
+import { CreateMovieDTO } from "../../../../application/movie/dto/CreateMovieDTO";
+import { UpdateMovieDTO } from "../../../../application/movie/dto/UpdateMovieDTO";
+import { db } from "../db"
 
 
 export class PrismaMovierepository implements MovieRepository {

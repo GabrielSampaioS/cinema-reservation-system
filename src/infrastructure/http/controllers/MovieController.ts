@@ -1,10 +1,10 @@
 import { Request, Response } from "express";
 
 
-import { CreatemovieUseCase } from "../use-case/CreateMovieUseCase";
-import { DeleteMovieUseCase } from "../use-case/DeleteMovieUseCase";
-import { GetMovieByIdUseCase } from "../use-case/GetMovieByIdUseCase";
-import { UpdateMovieUseCase } from "../use-case/UpdateMovieUseCase";
+import { CreatemovieUseCase } from "../../../application/movie/use-case/CreateMovieUseCase";
+import { DeleteMovieUseCase } from "../../../application/movie/use-case/DeleteMovieUseCase";
+import { GetMovieByIdUseCase } from "../../../application/movie/use-case/GetMovieByIdUseCase";
+import { UpdateMovieUseCase } from "../../../application/movie/use-case/UpdateMovieUseCase";
 
 export class MovieController {
     constructor(

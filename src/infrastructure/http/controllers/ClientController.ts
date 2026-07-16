@@ -1,9 +1,9 @@
 import { Request, Response } from "express";
 
-import { CreateClientUseCase } from "../use-case/CreateClientUseCase"
-import { DeleteClientUseCase } from "../use-case/DeleteClientUseCase"
-import { GetClientByIdClientUseCase } from "../use-case/GetClientByIdUseCase"
-import { UpdateClientUseCase } from "../use-case/UpdateClientUseCase"
+import { CreateClientUseCase } from "../../../application/clientUser/use-case/CreateClientUseCase"
+import { DeleteClientUseCase } from "../../../application/clientUser/use-case/DeleteClientUseCase"
+import { GetClientByIdClientUseCase } from "../../../application/clientUser/use-case/GetClientByIdUseCase"
+import { UpdateClientUseCase } from "../../../application/clientUser/use-case/UpdateClientUseCase"
 
 
 export class ClientController {

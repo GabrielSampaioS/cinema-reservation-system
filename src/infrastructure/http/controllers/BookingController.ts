@@ -1,13 +1,13 @@
 import { Request, Response } from "express";
 
-import { CreateBookingUseCase } from "../use-case/CreateBookingUseCase";
-import { GetAllBookingsUseCase } from "../use-case/GetAllBookingsUseCase";
-import { GetBookingByIdUseCase } from "../use-case/GetBookingByIdUseCase";
-import { UpdateBookingUseCase } from "../use-case/UpdateBookingUseCase";
-import { DeleteBookingUseCase } from "../use-case/DeleteBookingUseCase";
+import { CreateBookingUseCase } from "../../../application/booking/use-case/CreateBookingUseCase";
+import { GetAllBookingsUseCase } from "../../../application/booking/use-case/GetAllBookingsUseCase";
+import { GetBookingByIdUseCase } from "../../../application/booking/use-case/GetBookingByIdUseCase";
+import { UpdateBookingUseCase } from "../../../application/booking/use-case/UpdateBookingUseCase";
+import { DeleteBookingUseCase } from "../../../application/booking/use-case/DeleteBookingUseCase";
 
-import { GetBookingsByClientIdUseCase } from "../use-case/GetBookingsByClientIdUseCase";
-import { GetBookingsBySessionIdUseCase } from "../use-case/GetBookingsBySessionIdUseCase";
+import { GetBookingsByClientIdUseCase } from "../../../application/booking/use-case/GetBookingsByClientIdUseCase";
+import { GetBookingsBySessionIdUseCase } from "../../../application/booking/use-case/GetBookingsBySessionIdUseCase";
 
 
 export class BookingController {

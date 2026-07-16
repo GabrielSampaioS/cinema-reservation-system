@@ -1,5 +1,5 @@
 import express from "express";
-import { ClientController } from "./ClientController";
+import { ClientController } from "../controllers/ClientController";
 
 export default function clientsRoutes(
     controller: ClientController

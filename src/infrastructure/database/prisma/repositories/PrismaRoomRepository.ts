@@ -1,7 +1,7 @@
-import { RoomRepository } from "../domain/RoomRepository"
-import { CreateRoomDTO } from "../dto/CreateRoomDTO"
-import { UpdateRoomDTO } from "../dto/UpdateRoomDTO"
-import { db } from "../../../infrastructure/database/prisma/db"
+import { RoomRepository } from "../../../../application/room/domain/RoomRepository"
+import { CreateRoomDTO } from "../../../../application/room/dto/CreateRoomDTO"
+import { UpdateRoomDTO } from "../../../../application/room/dto/UpdateRoomDTO"
+import { db } from "../db"
 import { Room } from "@prisma/client";
 
 export class PrismaRoomRepository implements RoomRepository {

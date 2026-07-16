@@ -1,6 +1,6 @@
-import { PrismaRoomRepository } from "../../application/room/infrastructure/PrismaRoomRepository";
+import { PrismaRoomRepository } from "../../infrastructure/database/prisma/repositories/PrismaRoomRepository";
 
-import {RoomController} from "../../application/room/infrastructure/RoomController"
+import {RoomController} from "../../infrastructure/http/controllers/RoomController"
 
 import { CreateRoomUseCase   } from "../../application/room/use-case/CreateRoomUseCase";
 import { DeleteRoomUseCase } from "../../application/room/use-case/DeleteRoomUseCase";

@@ -1,5 +1,5 @@
 import express  from "express";
-import {MovieController} from "./MovieController"
+import {MovieController} from "../controllers/MovieController"
 
 
 export default function moviesRoutes(

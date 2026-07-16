@@ -1,6 +1,6 @@
-import { PrismaMovierepository } from "../../application/movie/infrastructure/PrismaMovieRepository";
+import { PrismaMovierepository } from "../../infrastructure/database/prisma/repositories/PrismaMovieRepository";
 
-import {MovieController} from "../../application/movie/infrastructure/MovieController"
+import {MovieController} from "../../infrastructure/http/controllers/MovieController"
 
 import { CreatemovieUseCase   } from "../../application/movie/use-case/CreateMovieUseCase";
 import { DeleteMovieUseCase } from "../../application/movie/use-case/DeleteMovieUseCase";

@@ -1,6 +1,6 @@
-import { PrismaSessionRepository } from "../../application/session/infrastructure/PrismaSessionRepository";
+import { PrismaSessionRepository } from "../../infrastructure/database/prisma/repositories/PrismaSessionRepository";
 
-import { SessionController } from "../../application/session/infrastructure/SessionController"
+import { SessionController } from "../../infrastructure/http/controllers/SessionController"
 
 import { CreateSessionUseCase } from "../../application/session/use-case/CreateSessionUseCase";
 import { DeleteSessionUseCase } from "../../application/session/use-case/DeleteSessionUseCase";

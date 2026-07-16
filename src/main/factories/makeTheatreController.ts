@@ -1,6 +1,6 @@
-import { PrismaTheatreRepository } from "../../application/theatre/infrastructure/PrismaTheatreRepository";
+import { PrismaTheatreRepository } from "../../infrastructure/database/prisma/repositories/PrismaTheatreRepository";
 
-import { TheatreController } from "../..//application/theatre/infrastructure/TheatreController";
+import { TheatreController } from "../../infrastructure/http/controllers/TheatreController";
 
 import { CreateTheatreUseCase } from "../../application/theatre/use-case/CreateTheatreUseCase";
 import { GetAllTheatresUseCase } from "../../application/theatre/use-case/GetAllTheatresUseCase";

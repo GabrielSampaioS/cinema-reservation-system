@@ -1,68 +1,55 @@
 import express from "express";
-import { BookingController } from "./BookingController";
+import { SessionController } from "../controllers/SessionController";
 
-
-export default function bookingsRoutes(
-    controller: BookingController
+export default function sessionsRoutes(
+    controller: SessionController
 ) {
 
     const router = express.Router();
 
 
-
+    // Criar sessão
     router.post(
         "/",
         controller.create.bind(controller)
     );
 
 
-
+    // Listar todas as sessões
     router.get(
         "/",
         controller.findAll.bind(controller)
     );
 
 
-
+    // Buscar sessão por ID
     router.get(
-        "/:bookingId",
+        "/:sessionId",
         controller.findById.bind(controller)
     );
 
 
-
+    // Atualizar sessão
     router.patch(
-        "/:bookingId",
+        "/:sessionId",
         controller.update.bind(controller)
     );
 
 
-
+    // Deletar sessão
     router.delete(
-        "/:bookingId",
+        "/:sessionId",
         controller.delete.bind(controller)
     );
 
 
-
-    // reservas do cliente
-
+    // Sessões de um filme
     router.get(
-        "/client/:clientId",
-        controller.findByClientId.bind(controller)
-    );
-
-
-
-    // reservas da sessão
-
-    router.get(
-        "/session/:sessionId",
-        controller.findBySessionId.bind(controller)
+        "/movie/:movieId",
+        controller.findByMovieId.bind(controller)
     );
 
 
 
     return router;
-
 }

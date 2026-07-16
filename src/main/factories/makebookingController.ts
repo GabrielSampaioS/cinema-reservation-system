@@ -1,6 +1,6 @@
-import { PrismaBookingRepository } from "../../application/booking/infrastructure/PrismaBookingRepository"
+import { PrismaBookingRepository } from "../../infrastructure/database/prisma/repositories/PrismaBookingRepository"
 
-import { BookingController } from "../../application/booking/infrastructure/BookingController";
+import { BookingController } from "../../infrastructure/http/controllers/BookingController";
 
 import { CreateBookingUseCase } from "../../application/booking/use-case/CreateBookingUseCase";
 import { DeleteBookingUseCase } from "../../application/booking/use-case/DeleteBookingUseCase";
