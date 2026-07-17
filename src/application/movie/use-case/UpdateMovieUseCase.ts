@@ -8,6 +8,7 @@ export class UpdateMovieUseCase{
 
     async execute(movieId : number, data : UpdateMovieDTO){
         const result = await this.movieRepository.update(movieId, data)
+        return result
     }
 }
 

@@ -17,32 +17,33 @@ export class SeatController {
     ) { }
 
     async create(req: Request, res: Response) {
-        const result = await this.createSeatUseCase.execute(req.body)
+        const roomId = Number(req.params.roomId)
+        const result = await this.createSeatUseCase.execute({... req.body, roomId})
         return res.status(201).json(result);
 
     }
 
     async findById(req: Request, res: Response) {
-        const { ClientId } = req.params;
-        const result = await this.getSeatByIdUseCase.execute(Number(ClientId))
-        return res.status(201).json(result);
+        const { seatId } = req.params;
+        const result = await this.getSeatByIdUseCase.execute(Number(seatId))
+        return res.status(200).json(result);
     }
 
     async findByIdRoom(req: Request, res: Response) {
-        const { ClientId } = req.params;
-        const result = await this.getSeatsByRoomUseCase.execute(Number(ClientId))
-        return res.status(201).json(result);
+        const { roomId } = req.params;
+        const result = await this.getSeatsByRoomUseCase.execute(Number(roomId))
+        return res.status(200).json(result);
     }
 
     async update(req: Request, res: Response) {
-        const { ClientId } = req.params;
-        const result = await this.updateSeatUseCase.execute(Number(ClientId), req.body)
-        return res.status(201).json(result);
+        const { seatId } = req.params;
+        const result = await this.updateSeatUseCase.execute(Number(seatId), req.body)
+        return res.status(200).json(result);
     }
     async delete(req: Request, res: Response) {
-        const { ClientId } = req.params;
+        const { seatId } = req.params;
 
-        await this.deleteSeatUseCase.execute(Number(ClientId))
+        await this.deleteSeatUseCase.execute(Number(seatId))
         return res.sendStatus(204);
      }
 }

@@ -8,5 +8,7 @@ export class UpdateRoomUseCase{
 
     async execute(roomId : number, data : UpdateRoomDTO){
         const result = await this.roomRepository.update(roomId, data)
+
+        return result
     }
 }

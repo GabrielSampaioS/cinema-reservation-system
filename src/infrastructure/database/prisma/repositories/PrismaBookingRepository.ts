@@ -3,7 +3,7 @@ import { BookingRepository } from "../../../../application/booking/domain/Bookin
 import { CreateBookingDTO } from "../../../../application/booking/dto/CreateBookingDTO";
 import { UpdateBookingDTO } from "../../../../application/booking/dto/UpdateBookingDTO";
 
-import { Booking } from "@prisma/client";
+import { Booking } from "../../../../generated/prisma/client";
 
 import { db } from "../db";
 

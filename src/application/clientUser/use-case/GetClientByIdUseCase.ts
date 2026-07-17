@@ -1,5 +1,4 @@
 import { ClientRepository } from "../domain/ClientRepository";
-import { CreateClientDTO } from "../dto/CreateClientDTO";
 
 export class GetClientByIdClientUseCase{
     constructor(

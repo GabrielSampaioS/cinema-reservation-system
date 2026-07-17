@@ -1,7 +1,7 @@
 import { Request, Response } from "express";
 
 import { CreateRoomUseCase } from "../../../application/room/use-case/CreateRoomUseCase";
-import { GetRoomByIdUseCase } from "../../../application/room/use-case/GetRoomByIdUseCase";                                
+import { GetRoomByIdUseCase } from "../../../application/room/use-case/GetRoomByIdUseCase";
 import { DeleteRoomUseCase } from "../../../application/room/use-case/DeleteRoomUseCase";
 import { UpdateRoomUseCase } from "../../../application/room/use-case/UpdateRoomUseCase";
 
@@ -11,17 +11,18 @@ export class RoomController {
         private readonly deleteRoomUseCase: DeleteRoomUseCase,
         private readonly getRoomByIdUseCase: GetRoomByIdUseCase,
         private readonly updateRoomUseCase: UpdateRoomUseCase,
-    ) {}
+    ) { }
 
     async create(req: Request, res: Response) {
 
         const result = await this.createRoomUseCase.execute(req.body);
 
         return res.status(201).json(result);
+
     }
 
 
-   async findByRoomId(req: Request, res: Response) {
+    async findByRoomId(req: Request, res: Response) {
         const { roomId } = req.params;
 
         const result = await this.getRoomByIdUseCase.execute(Number(roomId));
@@ -38,6 +39,7 @@ export class RoomController {
         );
 
         return res.status(200).json(result);
+
     }
 
     async delete(req: Request, res: Response) {

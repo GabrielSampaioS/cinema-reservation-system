@@ -20,6 +20,9 @@ model Client {
 model Theatre {
   idTheatre Int @id @default(autoincrement())
   name String
+  address String
+  city String
+  state String
   latitude Float
   longitude Float
   createdAt DateTime @default(now())

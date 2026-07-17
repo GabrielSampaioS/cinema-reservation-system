@@ -47,13 +47,13 @@ export default function criarApp({
     app.use(cors());
     app.use(express.json());
 
-    app.use("/theatres", theatresRoutes(theatreController));
-    app.use("/rooms", roomsRoutes(roomController));
-    app.use("/clientes", clientsRoutes(clientController));
-    app.use("/movies", moviesRoutes(movieController));
-    app.use("/seats", seatsRoutes(seatController));
-    app.use("/sessions", sessionsRoutes(sessionController));
-    app.use("/bookings", bookingsRoutes(bookingController));
+    app.use("/theatre", theatresRoutes(theatreController));
+    app.use("/room", roomsRoutes(roomController));
+    app.use("/client", clientsRoutes(clientController));
+    app.use("/movie", moviesRoutes(movieController));
+    app.use("/seat", seatsRoutes(seatController));
+    app.use("/session", sessionsRoutes(sessionController));
+    app.use("/booking", bookingsRoutes(bookingController));
 
     return app;
 }

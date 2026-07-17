@@ -1,5 +1,8 @@
 export interface UpdateTheatreDTO { 
-    name?: string; 
-    latitude?: number; 
-    longitude?: number;
+    name: string;
+    address: string,
+    city : string,
+    state: string
+    latitude: number;
+    longitude: number;
 }

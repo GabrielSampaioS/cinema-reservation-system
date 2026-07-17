@@ -21,19 +21,19 @@ export class ClientController {
     }
 
     async findById(req: Request, res: Response) {
-        const { ClientId } = req.params;
-        const result = await this.getClientByIdClientUseCase.execute(Number(ClientId))
-        return res.status(201).json(result);
+        const { clientId } = req.params;
+        const result = await this.getClientByIdClientUseCase.execute(Number(clientId))
+        return res.status(200).json(result);
     }
     async update(req: Request, res: Response) {
-        const { ClientId } = req.params;
-        const result = await this.updateClientUseCase.execute(Number(ClientId), req.body)
-        return res.status(201).json(result);
+        const { clientId } = req.params;
+        const result = await this.updateClientUseCase.execute(Number(clientId), req.body)
+        return res.status(200).json(result);
     }
     async delete(req: Request, res: Response) {
-        const { ClientId } = req.params;
+        const { clientId } = req.params;
 
-        await this.deleteClientUseCase.execute(Number(ClientId))
+        await this.deleteClientUseCase.execute(Number(clientId))
         return res.sendStatus(204);
      }
 }

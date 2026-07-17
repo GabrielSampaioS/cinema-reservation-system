@@ -15,7 +15,9 @@ export class DeleteSessionUseCase {
         }
 
 
-        await this.repository.delete(id);
+        const result = await this.repository.delete(id);
+        return result
+
 
     }
 }

@@ -1,12 +1,12 @@
 import { ClientRepository } from "../domain/ClientRepository";
-import { CreateClientDTO } from "../dto/CreateClientDTO";
+import { UpdateCLientDTO } from "../dto/UpdateClientDTO";
 
 export class UpdateClientUseCase{
     constructor(
         private readonly clientRepository : ClientRepository
     ){}
 
-    async execute(idCLient : number, data: CreateClientDTO){
+    async execute(idCLient : number, data: UpdateCLientDTO){
         const result = await this.clientRepository.update(idCLient, data)
         return result
     }
