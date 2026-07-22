@@ -5,7 +5,6 @@ import { DeleteClientUseCase } from "../../../application/clientUser/use-case/De
 import { GetClientByIdClientUseCase } from "../../../application/clientUser/use-case/GetClientByIdUseCase"
 import { UpdateClientUseCase } from "../../../application/clientUser/use-case/UpdateClientUseCase"
 
-
 export class ClientController {
     constructor(
         private readonly createClientUseCase: CreateClientUseCase,
@@ -15,6 +14,7 @@ export class ClientController {
     ) { }
 
     async create(req: Request, res: Response) {
+        
         const result = await this.createClientUseCase.execute(req.body)
         return res.status(201).json(result);
 

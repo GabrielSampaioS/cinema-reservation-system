@@ -14,7 +14,6 @@ dotenv.config()
 
 //const theatreRepository = new PrismaTheatreRepository();
 
-
 //factories
 const theatreController = makeTheatreController()
 const roomController = makeRoomController()

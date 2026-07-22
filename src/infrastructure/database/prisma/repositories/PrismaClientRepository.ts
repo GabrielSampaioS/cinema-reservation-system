@@ -1,10 +1,13 @@
-import { Client } from "../../../../generated/prisma/client";
+import { Client } from "@prisma/client";
 import { ClientRepository } from "../../../../application/clientUser/domain/ClientRepository";
 import { CreateClientDTO } from "../../../../application/clientUser/dto/CreateClientDTO";
 import { UpdateCLientDTO } from "../../../../application/clientUser/dto/UpdateClientDTO";
 import { db } from "../db"
 
 export class PrismaClientRepository implements ClientRepository {
+    findByEmail(email: string): Promise<Client | null> {
+        return db.client.findUnique({where: {email  : email}})
+    }
     async create(data: CreateClientDTO): Promise<Client> {
         return db.client.create({
             data

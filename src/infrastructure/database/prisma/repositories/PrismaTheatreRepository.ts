@@ -2,7 +2,7 @@ import { TheatreRepository } from "../../../../application/theatre/domain/Theatr
 import { CreateTheatreDTO } from "../../../../application/theatre/dto/CreateTheatreDTO"
 import { UpdateTheatreDTO } from "../../../../application/theatre/dto/UpdateTheatreDTO"
 import { db } from "../db"
-import { Theatre } from "../../../../generated/prisma/client";
+import { Theatre } from "@prisma/client";
 
 "@/domain/repositories/TheatreRepository";
 

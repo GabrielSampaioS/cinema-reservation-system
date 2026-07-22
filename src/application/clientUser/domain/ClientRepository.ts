@@ -12,4 +12,6 @@ export interface ClientRepository {
 
     delete(id: number): Promise<void>;
 
+    findByEmail(email: string) : Promise<Client | null>
+
 }

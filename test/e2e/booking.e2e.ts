@@ -21,15 +21,15 @@ after(async () => {
 
 async function createBooking() {
 
-    const clientId = await createClient();
+    //const clientId = await createClient();
 
-    const movieId = await createMovie();
+    //const movieId = await createMovie();
 
-    const roomId = await createRoom();
+    //const roomId = await createRoom();
 
-    const sessionId = await createSession(movieId, roomId);
+    //const sessionId = await createSession(movieId, roomId);
 
-    const seatId = await createSeat(roomId);
+    //const seatId = await createSeat(roomId);
 
     const booking = makeBookingData(
         clientId,
@@ -168,3 +168,4 @@ describe("Booking E2E", () => {
     });
 
 });
+

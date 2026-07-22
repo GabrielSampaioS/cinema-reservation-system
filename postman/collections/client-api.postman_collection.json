@@ -1,0 +1,124 @@
+{
+  "info": {
+    "name": "Cinema Reservation API - Client",
+    "_postman_id": "c1b5d5f7-1234-4567-8910-client",
+    "description": "Client CRUD tests",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "http://localhost:3000"
+    },
+    {
+      "key": "clientId",
+      "value": ""
+    }
+  ],
+  "item": [
+    {
+      "name": "Client",
+      "item": [
+        {
+          "name": "Create Client",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"Gabriel Sampaio\",\n  \"email\": \"gabriel@email.com\", \n  \"passwordHash\": \"654sad324\"}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/client",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "client"
+              ]
+            }
+          },
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "pm.test('Status 201', function () {",
+                  "    pm.response.to.have.status(201);",
+                  "});",
+                  "",
+                  "const json = pm.response.json();",
+                  "",
+                  "pm.environment.set('clientId', json.idClient);"
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "name": "Get Client By ID",
+          "request": {
+            "method": "GET",
+            "url": {
+              "raw": "{{baseUrl}}/client/{{clientId}}",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "client",
+                "{{clientId}}"
+              ]
+            }
+          }
+        },
+        {
+          "name": "Update Client",
+          "request": {
+            "method": "PATCH",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"João Pedro\"\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/client/{{clientId}}",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "client",
+                "{{clientId}}"
+              ]
+            }
+          }
+        },
+        {
+          "name": "Delete Client",
+          "request": {
+            "method": "DELETE",
+            "url": {
+              "raw": "{{baseUrl}}/client/{{clientId}}",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "client",
+                "{{clientId}}"
+              ]
+            }
+          }
+        }
+      ]
+    }
+  ]
+}

@@ -1,6 +1,10 @@
-import express from "express";
+import express, { RequestHandler } from "express";
+
 import cors from "cors";
 import dotenv from "dotenv";
+
+import { applicationLogger, securityLogger } from "../logger";
+import pino_http from "pino-http"
 
 import theatresRoutes from "../infrastructure/http/routes/theatre.routes";
 import roomsRoutes from "../infrastructure/http/routes/room.routes";
@@ -19,6 +23,9 @@ import { SeatController } from "../infrastructure/http/controllers/SeatControlle
 import { SessionController } from "../infrastructure/http/controllers/SessionController"
 import { BookingController } from "../infrastructure/http/controllers/BookingController"
 
+import { middlewareError } from "../middlewares/MiddlewareError";
+
+
 interface Controllers {
     theatreController: TheatreController,
     roomController: RoomController,
@@ -28,6 +35,27 @@ interface Controllers {
     sessionController: SessionController,
     bookingController: BookingController
 }
+
+// Logger
+
+const loggerHttp = pino_http({logger : applicationLogger})
+
+const loggerSecurityMiddleware: RequestHandler = (
+    req,
+    res,
+    next
+) => {
+
+    req.security_log = securityLogger.child({
+        req: {
+            method: req.method,
+            url: req.originalUrl,
+            headers: req.headers
+        }
+    });
+
+    next();
+};
 
 export default function criarApp({
 
@@ -44,6 +72,8 @@ export default function criarApp({
     const app = express();
     dotenv.config();
 
+    app.use(loggerHttp)
+    app.use(loggerSecurityMiddleware)
     app.use(cors());
     app.use(express.json());
 
@@ -54,6 +84,8 @@ export default function criarApp({
     app.use("/seat", seatsRoutes(seatController));
     app.use("/session", sessionsRoutes(sessionController));
     app.use("/booking", bookingsRoutes(bookingController));
+
+    app.use(middlewareError)
 
     return app;
 }

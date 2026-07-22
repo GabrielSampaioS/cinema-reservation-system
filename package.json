@@ -7,8 +7,7 @@
     "dev": "tsx watch src/main/server.ts",
     "build": "tsc",
     "start": "node dist/main/server.js",
-    "test:e2e" : "tsx --env-file=.env --test --test-concurrency=1 test/e2e/index.e2e.spec.ts"
-    
+    "test:e2e": "tsx --env-file=.env --test --test-concurrency=1 test/e2e/index.e2e.spec.ts"
   },
   "repository": {
     "type": "git",
@@ -39,6 +38,9 @@
     "cors": "^2.8.6",
     "dotenv": "^17.4.2",
     "express": "^5.2.1",
-    "pg": "^8.22.0"
+    "pg": "^8.22.0",
+    "pino": "^10.3.1",
+    "pino-http": "^11.0.0",
+    "pino-pretty": "^13.1.3"
   }
 }

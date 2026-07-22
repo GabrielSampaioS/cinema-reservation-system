@@ -1,4 +1,4 @@
-import { Seat } from "../../../../generated/prisma/client";
+import { Seat } from "@prisma/client";
 import { SeatRepository } from "../../../../application/seat/domain/SeatRepository";
 import { CreateSeatDTO } from "../../../../application/seat/dto/CreateSeatDTO";
 import { UpdateSeatDTO } from "../../../../application/seat/dto/UpdateSeatDTO";
