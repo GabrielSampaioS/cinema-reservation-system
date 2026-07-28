@@ -9,7 +9,7 @@ export class GetClientByIdClientUseCase {
     async execute(idClient: number) {
 
         const result = await this.clientRepository.findById(idClient)
-        if (result) {
+        if (!result) {
             throw new NotFoundError(
                 "Usuário não localaizado",
                 "USER_NOT_FOUND"

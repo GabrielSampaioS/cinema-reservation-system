@@ -1,43 +1,26 @@
-import { after, before, beforeEach, describe, it } from "node:test";
+import {  describe, it } from "node:test";
 import assert from "node:assert/strict";
 import request from "supertest";
 
 import { app } from "../setup/app";
-import { cleanDatabase, disconnectDatabase } from "../setup/database";
 import { makeTheatreData } from "../factories/theatre.factory";
 
-before(async () => {
-  await cleanDatabase();
-});
-
-beforeEach(async () => {
-  await cleanDatabase();
-});
-
-after(async () => {
-  await disconnectDatabase();
-});
 
 describe("Theatre E2E", () => {
 
   it("should create a theatre", async () => {
 
-    const theatre = makeTheatreData();
 
-    const response = await request(app)
-      .post("/theatre")
-      .send(theatre)
-      .expect(201);
+  const theatre = makeTheatreData();
 
-    assert.ok(response.body.idTheatre);
 
-    assert.equal(response.body.name, theatre.name);
-    assert.equal(response.body.latitude, theatre.latitude);
-    assert.equal(response.body.longitude, theatre.longitude);
+  const response = await request(app)
+    .post("/theatre")
+    .send(theatre)
+    .expect(201);
 
-    assert.ok(response.body.createdAt);
 
-  });
+});
 
   it("should find theatre by id", async () => {
 

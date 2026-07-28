@@ -1,4 +1,4 @@
-import { Client } from "@prisma/client";
+import { Client } from "../../../../generated/prisma/client";
 import { ClientRepository } from "../../../../application/clientUser/domain/ClientRepository";
 import { CreateClientDTO } from "../../../../application/clientUser/dto/CreateClientDTO";
 import { UpdateCLientDTO } from "../../../../application/clientUser/dto/UpdateClientDTO";

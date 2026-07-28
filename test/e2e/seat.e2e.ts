@@ -1,24 +1,12 @@
-import { after, before, beforeEach, describe, it } from "node:test";
+import {describe, it } from "node:test";
 import assert from "node:assert/strict";
 import request from "supertest";
 
 import { app } from "../setup/app";
-import { cleanDatabase, disconnectDatabase } from "../setup/database";
 import { makeTheatreData } from "../factories/theatre.factory";
 import { makeRoomData } from "../factories/room.factory";
 import { makeSeatData } from "../factories/seat.factory"
 
-before(async () => {
-  await cleanDatabase();
-});
-
-beforeEach(async () => {
-  await cleanDatabase();
-});
-
-after(async () => {
-  await disconnectDatabase();
-});
 
 describe("Seat E2E", () => {
 

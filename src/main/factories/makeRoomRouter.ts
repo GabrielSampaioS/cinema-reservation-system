@@ -6,14 +6,17 @@ import { CreateRoomUseCase   } from "../../application/room/use-case/CreateRoomU
 import { DeleteRoomUseCase } from "../../application/room/use-case/DeleteRoomUseCase";
 import { GetRoomByIdUseCase } from "../../application/room/use-case/GetRoomByIdUseCase";
 import { UpdateRoomUseCase } from "../../application/room/use-case/UpdateRoomUseCase";
+import roomsRoutes from "../../infrastructure/http/routes/room.routes";
 
-export function makeRoomController() {
+export function makeRoomRouter() {
     const repository = new PrismaRoomRepository();
 
-    return new RoomController(
+    const controller = new RoomController(
         new CreateRoomUseCase(repository),
         new DeleteRoomUseCase(repository),
         new GetRoomByIdUseCase(repository),
         new UpdateRoomUseCase(repository),
     );
+
+    return roomsRoutes(controller)
 }

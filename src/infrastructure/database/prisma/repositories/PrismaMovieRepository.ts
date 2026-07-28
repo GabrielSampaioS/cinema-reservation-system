@@ -1,4 +1,4 @@
-import { Movie } from "@prisma/client";
+import { Movie } from "../../../../generated/prisma/client";
 import { MovieRepository } from "../../../../application/movie/domain/MovieRepository";
 import { CreateMovieDTO } from "../../../../application/movie/dto/CreateMovieDTO";
 import { UpdateMovieDTO } from "../../../../application/movie/dto/UpdateMovieDTO";

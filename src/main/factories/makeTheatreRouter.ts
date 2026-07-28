@@ -8,11 +8,12 @@ import { GetTheatreByIdUseCase } from "../../application/theatre/use-case/GetThe
 import { UpdateTheatreUseCase } from "../../application/theatre/use-case/UpdateTheatreUseCase";
 import { DeleteTheatreUseCase } from "../../application/theatre/use-case/DeleteTheatreUseCase";
 import { GetNearbyTheatresUseCase } from "../../application/theatre/use-case/GetNearbyTheatresUseCase";
+import theatresRoutes from "../../infrastructure/http/routes/theatre.routes";
 
-export function makeTheatreController() {
+export function makeTheatreRouter() {
     const repository = new PrismaTheatreRepository();
 
-    return new TheatreController(
+    const controller = new TheatreController(
         new CreateTheatreUseCase(repository),
         new GetAllTheatresUseCase(repository),
         new GetTheatreByIdUseCase(repository),
@@ -20,4 +21,6 @@ export function makeTheatreController() {
         new DeleteTheatreUseCase(repository),
         new GetNearbyTheatresUseCase(repository)
     );
+
+    return theatresRoutes(controller)
 }

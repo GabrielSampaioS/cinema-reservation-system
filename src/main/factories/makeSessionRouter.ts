@@ -8,12 +8,13 @@ import { GetAllSessionsUseCase } from "../../application/session/use-case/GetAll
 import { GetSessionByIdUseCase } from "../../application/session/use-case/GetSessionByIdUseCase";
 import { GetSessionsByMovieIdUseCase } from "../../application/session/use-case/GetSessionsByMovieIdUseCase";
 import { UpdateSessionUseCase } from "../../application/session/use-case/UpdateSessionUseCase";
+import sessionsRoutes from "../../infrastructure/http/routes/session.routes";
 
 
-export function makeSessioController() {
+export function makeSessioRouter() {
     const repository = new PrismaSessionRepository();
 
-    return new SessionController(
+    const controller = new SessionController(
         new CreateSessionUseCase(repository),
         new GetAllSessionsUseCase(repository),
         new GetSessionByIdUseCase(repository),
@@ -21,5 +22,7 @@ export function makeSessioController() {
         new DeleteSessionUseCase(repository),
         new GetSessionsByMovieIdUseCase(repository),
     );
+
+    return sessionsRoutes(controller)
 
 }

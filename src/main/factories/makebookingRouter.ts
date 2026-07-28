@@ -10,11 +10,14 @@ import { GetBookingsByClientIdUseCase } from "../../application/booking/use-case
 import { GetBookingsBySessionIdUseCase } from "../../application/booking/use-case/GetBookingsBySessionIdUseCase";
 import { UpdateBookingUseCase } from "../../application/booking/use-case/UpdateBookingUseCase";
 
+//Retornar a router ao invez do controller
+import bookingRoutes from "../../infrastructure/http/routes/booking.routes";
 
-export function makeBookingController() {
+
+export function makeBookingRouter() {
     const repository = new PrismaBookingRepository();
 
-    return new BookingController(
+    const controller = new BookingController(
         new CreateBookingUseCase(repository),
         new GetAllBookingsUseCase(repository),
         new GetBookingByIdUseCase(repository),
@@ -24,4 +27,6 @@ export function makeBookingController() {
         new GetBookingsBySessionIdUseCase(repository),
 
     );
+    return bookingRoutes(controller);
+
 }

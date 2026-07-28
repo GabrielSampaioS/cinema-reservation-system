@@ -1,20 +1,20 @@
 import criarApp from "../../src/main/app"
 
-import { makeTheatreController } from "../../src/main/factories/makeTheatreController"
-import { makeRoomController } from "../../src/main/factories/makeRoomControlle"
-import { makeClientController } from "../../src/main/factories/makeClienteControlle"
-import { makeMovieController } from "../../src/main/factories/makeMovieControlle"
-import { makeSeatController } from "../../src/main/factories/makeSeatControlle"
-import { makeSessioController } from "../../src/main/factories/makeSessionControlle"
-import { makeBookingController } from "../../src/main/factories/makebookingController"
+import { makeTheatreRouter } from "../../src/main/factories/makeTheatreRouter"
+import { makeRoomRouter } from "../../src/main/factories/makeRoomRouter"
+import { makeClientRouter } from "../../src/main/factories/makeClienteRouter"
+import { makeMovieRouter } from "../../src/main/factories/makeMovieRouter"
+import { makeSeatRouter } from "../../src/main/factories/makeSeatRouter"
+import { makeSessioRouter } from "../../src/main/factories/makeSessionRouter"
+import { makeBookingRouter } from "../../src/main/factories/makebookingRouter"
 
 //factories
-const theatreController = makeTheatreController()
-const roomController = makeRoomController()
-const clientController = makeClientController()
-const movieController = makeMovieController()
-const seatController = makeSeatController()
-const sessionController = makeSessioController()
-const bookingController = makeBookingController()
+const theatresRoutes = makeTheatreRouter()
+const roomsRoutes = makeRoomRouter()
+const clientsRoutes = makeClientRouter()
+const moviesRoutes = makeMovieRouter()
+const seatsRoutes = makeSeatRouter()
+const sessionsRoutes = makeSessioRouter()
+const bookingsRoutes = makeBookingRouter()
 
-export const app = criarApp({ theatreController, roomController, clientController, movieController, seatController, sessionController, bookingController })
+export const app = criarApp({ theatresRoutes, roomsRoutes, clientsRoutes, moviesRoutes, seatsRoutes, sessionsRoutes, bookingsRoutes })

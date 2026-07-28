@@ -4,7 +4,7 @@ import { UpdateSessionDTO } from "../../../../application/session/dto/UpdateSess
 
 import { db } from "../db";
 
-import { Session } from "@prisma/client";
+import { Session } from "../../../../generated/prisma/client";
 
 
 export class PrismaSessionRepository implements SessionRepository {

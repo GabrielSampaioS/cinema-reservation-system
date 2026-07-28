@@ -7,15 +7,19 @@ import { DeleteSeatUseCase } from "../../application/seat/use-case/DeleteSeatUse
 import { GetSeatByIdUseCase } from "../../application/seat/use-case/GetSeatByIdUseCase";
 import { GetSeatsByRoomUseCase } from "../../application/seat/use-case/GetSeatsByRoomUseCase";
 import { UpdateSeatUseCase } from "../../application/seat/use-case/UpdateSeatUseCase";
+import seatsRoutes from "../../infrastructure/http/routes/seat.routes";
 
-export function makeSeatController() {
+export function makeSeatRouter() {
     const repository = new PrismaSeatRepository();
 
-    return new SeatController(
+    const controller = new SeatController(
         new CreateSeatUseCase(repository),
         new DeleteSeatUseCase(repository),
         new GetSeatByIdUseCase(repository),
         new GetSeatsByRoomUseCase(repository),
         new UpdateSeatUseCase(repository),
     );
+
+
+    return seatsRoutes(controller)
 }

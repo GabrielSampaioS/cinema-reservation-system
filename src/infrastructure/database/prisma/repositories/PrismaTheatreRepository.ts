@@ -2,15 +2,23 @@ import { TheatreRepository } from "../../../../application/theatre/domain/Theatr
 import { CreateTheatreDTO } from "../../../../application/theatre/dto/CreateTheatreDTO"
 import { UpdateTheatreDTO } from "../../../../application/theatre/dto/UpdateTheatreDTO"
 import { db } from "../db"
-import { Theatre } from "@prisma/client";
+import { Theatre } from "../../../../generated/prisma/client";
 
-"@/domain/repositories/TheatreRepository";
+
 
 export class PrismaTheatreRepository implements TheatreRepository {
+    findNearby(latitude: number, longitude: number, radiusInKm?: number): Promise<Theatre[]> {
+        throw new Error("Method not implemented.");
+    }
     async create(data: CreateTheatreDTO) {
-        return db.theatre.create({
+
+
+        const result = await db.theatre.create({
             data,
         });
+
+
+        return result;
     }
 
     async findAll() {
@@ -42,26 +50,4 @@ export class PrismaTheatreRepository implements TheatreRepository {
         });
     }
 
-    async findNearby(
-        latitude: number,
-        longitude: number,
-        radiusInKm = 10
-    ): Promise<Theatre[]> {
-
-        const theatres = await db.theatre.findMany();
-
-        return theatres.filter(theatre => {
-            const latDiff = Math.abs(theatre.latitude - latitude);
-            const lonDiff = Math.abs(theatre.longitude - longitude);
-
-            // Aproximação:
-            // 1 grau ≈ 111 km
-            const distance = Math.sqrt(
-                latDiff * latDiff +
-                lonDiff * lonDiff
-            ) * 111;
-
-            return distance <= radiusInKm;
-        });
-    }
 }

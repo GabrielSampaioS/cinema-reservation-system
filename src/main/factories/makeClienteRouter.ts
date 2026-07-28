@@ -6,14 +6,17 @@ import { CreateClientUseCase   } from "../../application/clientUser/use-case/Cre
 import { DeleteClientUseCase } from "../../application/clientUser/use-case/DeleteClientUseCase";
 import { GetClientByIdClientUseCase } from "../../application/clientUser/use-case/GetClientByIdUseCase";
 import { UpdateClientUseCase } from "../../application/clientUser/use-case/UpdateClientUseCase";
+import clientsRoutes from "../../infrastructure/http/routes/client.routes";
 
-export function makeClientController() {
+export function makeClientRouter() {
     const repository = new PrismaClientRepository();
 
-    return new ClientController(
+    const controller = new ClientController(
         new CreateClientUseCase(repository),
         new DeleteClientUseCase(repository),
         new GetClientByIdClientUseCase(repository),
         new UpdateClientUseCase(repository),
     );
+
+    return clientsRoutes(controller);
 }

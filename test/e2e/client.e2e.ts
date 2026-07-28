@@ -1,22 +1,11 @@
-import { after, before, beforeEach, describe, it } from "node:test";
+import { describe, it } from "node:test";
 import assert from "node:assert/strict";
 import request from "supertest";
 
 import { app } from "../setup/app";
-import { cleanDatabase, disconnectDatabase } from "../setup/database";
 import { makeClientData } from "../factories/client.factory";
 
-before(async () => {
-  await cleanDatabase();
-});
 
-beforeEach(async () => {
-  await cleanDatabase();
-});
-
-after(async () => {
-  await disconnectDatabase();
-});
 
 describe("Client E2E", () => {
 

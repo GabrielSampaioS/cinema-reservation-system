@@ -11,7 +11,6 @@ export class CreateTheatreUseCase {
         //const dadosLimpos = Sanitizer.sanitizar(data)
         //TheatreValidador.validar(dadosLimpos)
 
-
         const result = await this.theatreRepository.create(data)
 
         // const result datosDto(theatre)

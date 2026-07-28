@@ -6,17 +6,17 @@ export class DeleteClientUseCase {
         private readonly clientRepository: ClientRepository
     ) { }
 
-    async execute(idClient: number) {
+    async execute(clientId: number) {
 
-        const clientExists = await this.clientRepository.findById(idClient)
-        if (clientExists) {
+        const clientExists = await this.clientRepository.findById(clientId)
+        if (!clientExists) {
             throw new NotFoundError(
                 "Usuário não localaizado",
                 "USER_NOT_FOUND"
             );
         }
 
-        const result = await this.clientRepository.delete(idClient)
+        const result = await this.clientRepository.delete(clientId)
         return result
     }
 }

@@ -4,23 +4,9 @@ import request from "supertest";
 import { app } from "../setup/app";
 import { makeRoomData } from "../factories/room.factory";
 import { makeTheatreData } from "../factories/theatre.factory";
-import { after, before, beforeEach, describe, it } from "node:test";
-import { cleanDatabase, disconnectDatabase } from "../setup/database";
-
-before(async () => {
-  await cleanDatabase();
-});
-
-beforeEach(async () => {
-  await cleanDatabase();
-});
-
-after(async () => {
-  await disconnectDatabase();
-});
+import { describe, it } from "node:test";
 
 describe("Room E2E", () => {
-
 
     it("should create a room", async () => {
 

@@ -5,21 +5,9 @@ import { app } from "../setup/app";
 import { makeRoomData } from "../factories/room.factory";
 import { makeMovieData } from "../factories/movie.factory";
 import { makeTheatreData } from "../factories/theatre.factory";
-import { after, before, beforeEach, describe, it } from "node:test";
-import { cleanDatabase, disconnectDatabase } from "../setup/database";
+import {  describe, it } from "node:test";
 import { makeSessionData } from "../factories/session.factory";
 
-before(async () => {
-  await cleanDatabase();
-});
-
-beforeEach(async () => {
-  await cleanDatabase();
-});
-
-after(async () => {
-  await disconnectDatabase();
-});
 
 
 async function createMovie() {

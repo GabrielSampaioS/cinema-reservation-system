@@ -3,21 +3,9 @@ import request from "supertest";
 
 import { app } from "../setup/app";
 
-import { after, before, beforeEach, describe, it } from "node:test";
-import { cleanDatabase, disconnectDatabase } from "../setup/database";
+import { describe, it } from "node:test";
 import { makeMovieData} from "../factories/movie.factory"
 
-before(async () => {
-  await cleanDatabase();
-});
-
-beforeEach(async () => {
-  await cleanDatabase();
-});
-
-after(async () => {
-  await disconnectDatabase();
-});
 
 describe("Movie E2E", () => {
 

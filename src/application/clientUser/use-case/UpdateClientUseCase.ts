@@ -10,7 +10,7 @@ export class UpdateClientUseCase {
     async execute(idClient: number, data: UpdateCLientDTO) {
 
         const clientExists = await this.clientRepository.findById(idClient)
-        if (clientExists) {
+        if (!clientExists) {
             throw new NotFoundError(
                 "Usuário não localaizado",
                 "USER_NOT_FOUND"

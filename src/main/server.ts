@@ -1,27 +1,26 @@
 import dotenv from "dotenv";
 import criarApp from "./app";
-//import { PrismaTheatreRepository } from "../application/theatre/infrastructure/PrismaTheatreRepository";
 
-import { makeTheatreController } from "./factories/makeTheatreController"
-import { makeRoomController } from "./factories/makeRoomControlle"
-import { makeClientController } from "./factories/makeClienteControlle"
-import { makeMovieController } from "./factories/makeMovieControlle"
-import { makeSeatController } from "./factories/makeSeatControlle"
-import { makeSessioController } from "./factories/makeSessionControlle"
-import { makeBookingController } from "./factories/makebookingController"
+import { makeTheatreRouter } from "./factories/makeTheatreRouter"
+import { makeRoomRouter } from "./factories/makeRoomRouter"
+import { makeClientRouter } from "./factories/makeClienteRouter"
+import { makeMovieRouter } from "./factories/makeMovieRouter"
+import { makeSeatRouter } from "./factories/makeSeatRouter"
+import { makeSessioRouter } from "./factories/makeSessionRouter"
+import { makeBookingRouter } from "./factories/makebookingRouter"
 
 dotenv.config()
 
 //const theatreRepository = new PrismaTheatreRepository();
 
 //factories
-const theatreController = makeTheatreController()
-const roomController = makeRoomController()
-const clientController = makeClientController()
-const movieController = makeMovieController()
-const seatController = makeSeatController()
-const sessionController = makeSessioController()
-const bookingController = makeBookingController()
+const theatresRoutes = makeTheatreRouter()
+const roomsRoutes = makeRoomRouter()
+const clientsRoutes = makeClientRouter()
+const moviesRoutes = makeMovieRouter()
+const seatsRoutes = makeSeatRouter()
+const sessionsRoutes = makeSessioRouter()
+const bookingsRoutes = makeBookingRouter()
 
 
 async function start() {
@@ -29,7 +28,7 @@ async function start() {
 
     //implementação das interfaces
 
-    const app = criarApp({ theatreController, roomController, clientController, movieController, seatController, sessionController, bookingController })
+    const app = criarApp({ theatresRoutes, roomsRoutes, clientsRoutes, moviesRoutes, seatsRoutes, sessionsRoutes, bookingsRoutes })
 
     app.listen(
         process.env.PORT, () => {
