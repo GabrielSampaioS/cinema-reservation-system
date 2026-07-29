@@ -17,7 +17,7 @@ import bookingRoutes from "../../infrastructure/http/routes/booking.routes";
 export function makeBookingRouter() {
     const repository = new PrismaBookingRepository();
 
-    const controller = new BookingController(
+    const bookingController = new BookingController(
         new CreateBookingUseCase(repository),
         new GetAllBookingsUseCase(repository),
         new GetBookingByIdUseCase(repository),
@@ -27,6 +27,6 @@ export function makeBookingRouter() {
         new GetBookingsBySessionIdUseCase(repository),
 
     );
-    return bookingRoutes(controller);
+    return bookingRoutes(bookingController);
 
 }

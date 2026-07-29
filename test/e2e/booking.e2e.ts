@@ -1,27 +1,38 @@
-import {describe, it } from "node:test";
+import { after, before, beforeEach, describe, it } from "node:test";
+import { cleanDatabase, disconnectDatabase } from "../setup/database";
 import assert from "node:assert/strict";
 import request from "supertest";
 
 import { app } from "../setup/app";
 import { makeBookingData } from "../factories/booking.factory";
+import { createClient } from "../helpers/createClient";
+import { createRoom } from "../helpers/createRoom";
+import { createMovie } from "../helpers/createMovie";
+import { createSession } from "../helpers/createSession";
+import { createTheatre } from "../helpers/createTheatre";
+import { createSeat } from "../helpers/createSeat";
 
 
 async function createBooking() {
 
-    //const clientId = await createClient();
+    const client = await createClient();
 
-    //const movieId = await createMovie();
+    const theatre = await createTheatre()
 
-    //const roomId = await createRoom();
+    const movie = await createMovie();
 
-    //const sessionId = await createSession(movieId, roomId);
+    const room = await createRoom(theatre.idTheatre);
 
-    //const seatId = await createSeat(roomId);
+    const session = await createSession(movie.idMovie, room.idRoom);
+
+    const seat = await createSeat(room.idRoom);
 
     const booking = makeBookingData(
-        clientId,
-        sessionId,
-        seatId
+        {
+            clientId: client.idClient,
+            sessionId: session.idSession,
+            seatId: seat.idSeat
+        }
     );
 
     const response = await request(app)
@@ -29,9 +40,11 @@ async function createBooking() {
         .send(booking)
         .expect(201);
 
+
     return response.body;
 
 }
+
 
 describe("Booking E2E", () => {
 
@@ -155,4 +168,6 @@ describe("Booking E2E", () => {
     });
 
 });
+
+
 

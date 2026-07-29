@@ -12,7 +12,7 @@ import seatsRoutes from "../../infrastructure/http/routes/seat.routes";
 export function makeSeatRouter() {
     const repository = new PrismaSeatRepository();
 
-    const controller = new SeatController(
+    const seatController = new SeatController(
         new CreateSeatUseCase(repository),
         new DeleteSeatUseCase(repository),
         new GetSeatByIdUseCase(repository),
@@ -21,5 +21,5 @@ export function makeSeatRouter() {
     );
 
 
-    return seatsRoutes(controller)
+    return seatsRoutes(seatController)
 }

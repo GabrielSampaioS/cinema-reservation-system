@@ -14,7 +14,7 @@ import sessionsRoutes from "../../infrastructure/http/routes/session.routes";
 export function makeSessioRouter() {
     const repository = new PrismaSessionRepository();
 
-    const controller = new SessionController(
+    const sessionController = new SessionController(
         new CreateSessionUseCase(repository),
         new GetAllSessionsUseCase(repository),
         new GetSessionByIdUseCase(repository),
@@ -23,6 +23,6 @@ export function makeSessioRouter() {
         new GetSessionsByMovieIdUseCase(repository),
     );
 
-    return sessionsRoutes(controller)
+    return sessionsRoutes(sessionController)
 
 }

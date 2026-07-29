@@ -1,4 +1,6 @@
-import {  describe, it } from "node:test";
+import { after, before, beforeEach, describe, it } from "node:test";
+import { cleanDatabase, disconnectDatabase } from "../setup/database";
+
 import assert from "node:assert/strict";
 import request from "supertest";
 
@@ -11,16 +13,16 @@ describe("Theatre E2E", () => {
   it("should create a theatre", async () => {
 
 
-  const theatre = makeTheatreData();
+    const theatre = makeTheatreData();
 
 
-  const response = await request(app)
-    .post("/theatre")
-    .send(theatre)
-    .expect(201);
+    const response = await request(app)
+      .post("/theatre")
+      .send(theatre)
+      .expect(201);
 
 
-});
+  });
 
   it("should find theatre by id", async () => {
 

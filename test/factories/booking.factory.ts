@@ -1,17 +1,9 @@
-let counter = 1;
 
-export function makeBookingData(
-    clientId: number,
-    sessionId: number,
-    seatId: number,
-    overrides = {}
-) {
+export function makeBookingData(overrides = {}) {
     return {
-        clientId,
-        sessionId,
-        seatId,
-        statusId: 1,
-        reference: `BOOK-${counter++}`,
+        clientId : 1,
+        sessionId : 1,
+        seatId :1,
         ...overrides,
     };
 }

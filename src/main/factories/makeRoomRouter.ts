@@ -11,12 +11,12 @@ import roomsRoutes from "../../infrastructure/http/routes/room.routes";
 export function makeRoomRouter() {
     const repository = new PrismaRoomRepository();
 
-    const controller = new RoomController(
+    const roomController  = new RoomController(
         new CreateRoomUseCase(repository),
         new DeleteRoomUseCase(repository),
         new GetRoomByIdUseCase(repository),
         new UpdateRoomUseCase(repository),
     );
 
-    return roomsRoutes(controller)
+    return roomsRoutes(roomController)
 }

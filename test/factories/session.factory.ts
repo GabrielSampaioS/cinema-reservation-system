@@ -1,17 +1,13 @@
 let counter = 1;
 
-export function makeSessionData(
-    movieId: number,
-    roomId: number,
-    price  : number,
-    overrides = {}
+export function makeSessionData(overrides = {}
 ) {
 
     return {
-        movieId,
-        roomId,
+        movieId : 1,
+        roomId : 1 ,
         startTime: new Date("2026-07-20T19:00:00"),
-        price, 
+        price : 10,
         ...overrides,
     };
 

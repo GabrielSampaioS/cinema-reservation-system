@@ -25,6 +25,7 @@ export class BookingController {
 
     async create(req: Request, res: Response) {
 
+
         const booking = await this.createBookingUseCase.execute(
             req.body
         );

@@ -5,18 +5,27 @@ import { CreateBookingDTO } from "../dto/CreateBookingDTO";
 export class CreateBookingUseCase {
 
 
-constructor(
-    private repository: BookingRepository
-){}
+    constructor(
+        private repository: BookingRepository
+    ) { }
 
 
-async execute(
-    data:CreateBookingDTO
-){
+    async execute(data: CreateBookingDTO) {
 
-    return this.repository.create(data);
 
-}
+        const booking: CreateBookingDTO = {
+            clientId: Number(data.clientId),
+            sessionId: data.clientId,
+            seatId: data.seatId,
+            statusId: 1,
+            expiresAt: new Date(Date.now() + 15 * 60 * 1000),
+        }
+
+        const result = await this.repository.create(booking);
+
+        return result
+
+    }
 
 
 }

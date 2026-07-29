@@ -4,7 +4,9 @@ import request from "supertest";
 import { app } from "../setup/app";
 import { makeRoomData } from "../factories/room.factory";
 import { makeTheatreData } from "../factories/theatre.factory";
-import { describe, it } from "node:test";
+import { after, before, beforeEach, describe, it } from "node:test";
+import { cleanDatabase, disconnectDatabase } from "../setup/database";
+
 
 describe("Room E2E", () => {
 

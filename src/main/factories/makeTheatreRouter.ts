@@ -13,7 +13,7 @@ import theatresRoutes from "../../infrastructure/http/routes/theatre.routes";
 export function makeTheatreRouter() {
     const repository = new PrismaTheatreRepository();
 
-    const controller = new TheatreController(
+    const theatreController = new TheatreController(
         new CreateTheatreUseCase(repository),
         new GetAllTheatresUseCase(repository),
         new GetTheatreByIdUseCase(repository),
@@ -22,5 +22,5 @@ export function makeTheatreRouter() {
         new GetNearbyTheatresUseCase(repository)
     );
 
-    return theatresRoutes(controller)
+    return theatresRoutes(theatreController)
 }

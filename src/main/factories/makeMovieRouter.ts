@@ -11,13 +11,13 @@ import moviesRoutes from "../../infrastructure/http/routes/movie.routes";
 export function makeMovieRouter() {
     const repository = new PrismaMovierepository();
 
-    const controller = new MovieController(
+    const movieController = new MovieController(
         new CreatemovieUseCase(repository),
         new DeleteMovieUseCase(repository),
         new GetMovieByIdUseCase(repository),
         new UpdateMovieUseCase(repository),
     );
 
-    return moviesRoutes(controller);
+    return moviesRoutes(movieController);
 
 }

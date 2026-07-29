@@ -11,12 +11,12 @@ import clientsRoutes from "../../infrastructure/http/routes/client.routes";
 export function makeClientRouter() {
     const repository = new PrismaClientRepository();
 
-    const controller = new ClientController(
+    const clientController = new ClientController(
         new CreateClientUseCase(repository),
         new DeleteClientUseCase(repository),
         new GetClientByIdClientUseCase(repository),
         new UpdateClientUseCase(repository),
     );
 
-    return clientsRoutes(controller);
+    return clientsRoutes(clientController);
 }

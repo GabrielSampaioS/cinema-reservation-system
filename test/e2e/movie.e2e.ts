@@ -3,7 +3,8 @@ import request from "supertest";
 
 import { app } from "../setup/app";
 
-import { describe, it } from "node:test";
+import { after, before, beforeEach, describe, it } from "node:test";
+import { cleanDatabase, disconnectDatabase } from "../setup/database";
 import { makeMovieData} from "../factories/movie.factory"
 
 

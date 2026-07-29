@@ -15,7 +15,8 @@ export async function cleanDatabase() {
     await prisma.movie.deleteMany();
     await prisma.client.deleteMany();
     await prisma.theatre.deleteMany();
-    await prisma.status.deleteMany();
+    //await prisma.status.deleteMany();
+
 }
 
 export async function disconnectDatabase() {

@@ -5,7 +5,8 @@ import { app } from "../setup/app";
 import { makeRoomData } from "../factories/room.factory";
 import { makeMovieData } from "../factories/movie.factory";
 import { makeTheatreData } from "../factories/theatre.factory";
-import {  describe, it } from "node:test";
+import { after, before, beforeEach, describe, it } from "node:test";
+import { cleanDatabase, disconnectDatabase } from "../setup/database";
 import { makeSessionData } from "../factories/session.factory";
 
 
@@ -43,6 +44,8 @@ async function createRoom() {
     return createdRoom.body.idRoom;
 }
 
+
+
 describe("Session E2E", () => {
 
     it("should create a session", async () => {
@@ -52,9 +55,11 @@ describe("Session E2E", () => {
         const roomId = await createRoom();
 
         const session = makeSessionData(
-            movieId,
-            roomId,
-            10
+            {
+                movieId,
+                roomId,
+            }
+
         );
 
         const response = await request(app)
@@ -87,9 +92,9 @@ describe("Session E2E", () => {
         const roomId = await createRoom();
 
         const session = makeSessionData(
-            movieId,
-            roomId,
-            10
+            {movieId,
+            roomId,}
+
         );
 
         await request(app)
@@ -123,9 +128,9 @@ describe("Session E2E", () => {
         const roomId = await createRoom();
 
         const session = makeSessionData(
-            movieId,
-            roomId,
-            10
+            {movieId,
+            roomId}
+            
         );
 
         const created = await request(app)
@@ -152,9 +157,9 @@ describe("Session E2E", () => {
         const roomId = await createRoom();
 
         const session = makeSessionData(
-            movieId,
-            roomId,
-            10
+            {movieId,
+            roomId}
+        
         );
 
         const created = await request(app)
@@ -186,9 +191,8 @@ describe("Session E2E", () => {
         const roomId = await createRoom();
 
         const session = makeSessionData(
-            movieId,
-            roomId,
-            10
+            {movieId,
+            roomId,}
         );
 
         const created = await request(app)
@@ -211,9 +215,8 @@ describe("Session E2E", () => {
         const roomId = await createRoom();
 
         const session = makeSessionData(
-            movieId,
-            roomId,
-            10
+            {movieId,
+            roomId,}
         );
 
         await request(app)
