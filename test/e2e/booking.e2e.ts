@@ -1,5 +1,4 @@
-import { after, before, beforeEach, describe, it } from "node:test";
-import { cleanDatabase, disconnectDatabase } from "../setup/database";
+import { describe, it } from "node:test";
 import assert from "node:assert/strict";
 import request from "supertest";
 
@@ -35,11 +34,11 @@ async function createBooking() {
         }
     );
 
+
     const response = await request(app)
         .post("/booking")
         .send(booking)
         .expect(201);
-
 
     return response.body;
 
@@ -47,6 +46,7 @@ async function createBooking() {
 
 
 describe("Booking E2E", () => {
+
 
     it("should create a booking", async () => {
 

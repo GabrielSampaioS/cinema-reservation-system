@@ -12,14 +12,25 @@ import { db } from "../db";
 export class PrismaBookingRepository
     implements BookingRepository {
 
+    //todo: criar um trataamento de erros em todos os repo
     async create(
         data: CreateBookingDTO
     ): Promise<Booking> {
 
-        return db.booking.create({
-            data
-        });
 
+        try {
+
+            const booking = await db.booking.create({
+                data
+            });
+            return booking;
+
+        } catch (error) {
+
+            console.error(error);
+
+            throw error;
+        }
     }
 
     async findAll() {

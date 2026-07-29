@@ -1,17 +1,19 @@
+
 import { before, after, beforeEach } from "node:test";
 import { cleanDatabase, disconnectDatabase } from "../setup/database";
 
 before(async () => {
-  await cleanDatabase();
+    await cleanDatabase();
 });
 
 beforeEach(async () => {
-  await cleanDatabase();
+    await cleanDatabase();
 });
 
 after(async () => {
-  await disconnectDatabase();
+    await disconnectDatabase();
 });
+
 
 
 import "./client.e2e";
@@ -21,4 +23,5 @@ import "./theatre.e2e";
 import "./movie.e2e";
 import "./session.e2e";
 import "./booking.e2e";
+
 
