@@ -1,4 +1,4 @@
-import pino, { destination, transport } from "pino";
+import pino from "pino";
 
 //transporte 
 // 1 Terminal

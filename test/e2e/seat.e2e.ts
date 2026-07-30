@@ -1,5 +1,4 @@
-import { after, before, beforeEach, describe, it } from "node:test";
-import { cleanDatabase, disconnectDatabase } from "../setup/database";
+import { describe, it } from "node:test";
 import assert from "node:assert/strict";
 import request from "supertest";
 
@@ -63,7 +62,7 @@ describe("Seat E2E", () => {
 
         const seat = makeSeatData({ roomId: roomId });
 
-        const createdSeat = await request(app)
+       await request(app)
             .post(`/seat/rooms/${roomId}/seats`)
             .send(seat).expect(201);
 

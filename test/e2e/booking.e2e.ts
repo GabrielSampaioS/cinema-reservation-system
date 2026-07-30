@@ -168,6 +168,3 @@ describe("Booking E2E", () => {
     });
 
 });
-
-
-

@@ -1,4 +1,3 @@
-
 import { before, after, beforeEach } from "node:test";
 import { cleanDatabase, disconnectDatabase } from "../setup/database";
 
@@ -23,5 +22,3 @@ import "./theatre.e2e";
 import "./movie.e2e";
 import "./session.e2e";
 import "./booking.e2e";
-
-

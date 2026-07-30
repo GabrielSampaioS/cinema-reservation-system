@@ -3,9 +3,8 @@ import request from "supertest";
 
 import { app } from "../setup/app";
 
-import { after, before, beforeEach, describe, it } from "node:test";
-import { cleanDatabase, disconnectDatabase } from "../setup/database";
-import { makeMovieData} from "../factories/movie.factory"
+import { describe, it } from "node:test";
+import { makeMovieData } from "../factories/movie.factory"
 
 
 describe("Movie E2E", () => {
@@ -120,9 +119,7 @@ describe("Movie E2E", () => {
         /*await request(app)
             .get(`/movie/${created.body.idMovie}`)
             .expect(404);
-*/
-
+        */
     });
-
 
 });

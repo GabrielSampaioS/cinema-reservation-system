@@ -1,5 +1,3 @@
-let counter = 1;
-
 export function makeSessionData(overrides = {}
 ) {
 
