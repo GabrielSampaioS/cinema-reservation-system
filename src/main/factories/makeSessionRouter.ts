@@ -1,6 +1,6 @@
 import { PrismaSessionRepository } from "../../infrastructure/database/prisma/repositories/PrismaSessionRepository";
 
-import { SessionController } from "../../infrastructure/http/controllers/SessionController"
+import { SessionController } from "../../infrastructure/http/controllers/SessionController";
 
 import { CreateSessionUseCase } from "../../application/session/use-case/CreateSessionUseCase";
 import { DeleteSessionUseCase } from "../../application/session/use-case/DeleteSessionUseCase";
@@ -9,7 +9,6 @@ import { GetSessionByIdUseCase } from "../../application/session/use-case/GetSes
 import { GetSessionsByMovieIdUseCase } from "../../application/session/use-case/GetSessionsByMovieIdUseCase";
 import { UpdateSessionUseCase } from "../../application/session/use-case/UpdateSessionUseCase";
 import sessionsRoutes from "../../infrastructure/http/routes/session.routes";
-
 
 export function makeSessioRouter() {
     const repository = new PrismaSessionRepository();
@@ -23,6 +22,5 @@ export function makeSessioRouter() {
         new GetSessionsByMovieIdUseCase(repository),
     );
 
-    return sessionsRoutes(sessionController)
-
+    return sessionsRoutes(sessionController);
 }

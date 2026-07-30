@@ -5,85 +5,60 @@ import request from "supertest";
 import { app } from "../setup/app";
 import { makeClientData } from "../factories/client.factory";
 
-
-
 describe("Client E2E", () => {
+    it("should create a client", async () => {
+        const client = makeClientData();
 
-  it("should create a client", async () => {
+        const response = await request(app).post("/client").send(client).expect(201);
 
-    const client = makeClientData();
+        assert.ok(response.body.idClient);
 
-    const response = await request(app)
-      .post("/client")
-      .send(client)
-      .expect(201);
+        assert.equal(response.body.name, client.name);
+        assert.equal(response.body.email, client.email);
 
-    assert.ok(response.body.idClient);
+        assert.ok(response.body.createdAt);
+    });
 
-    assert.equal(response.body.name, client.name);
-    assert.equal(response.body.email, client.email);
+    it("should find client by id", async () => {
+        const client = makeClientData();
 
-    assert.ok(response.body.createdAt);
+        const created = await request(app).post("/client").send(client);
 
-  });
+        const response = await request(app).get(`/client/${created.body.idClient}`).expect(200);
 
-  it("should find client by id", async () => {
+        assert.equal(response.body.idClient, created.body.idClient);
 
-    const client = makeClientData();
+        assert.equal(response.body.name, client.name);
 
-    const created = await request(app)
-      .post("/client")
-      .send(client);
+        assert.equal(response.body.email, client.email);
+    });
 
-    const response = await request(app)
-      .get(`/client/${created.body.idClient}`)
-      .expect(200);
+    it("should update client", async () => {
+        const client = makeClientData();
 
-    assert.equal(response.body.idClient, created.body.idClient);
+        const created = await request(app).post("/client").send(client);
 
-    assert.equal(response.body.name, client.name);
+        const response = await request(app)
+            .patch(`/client/${created.body.idClient}`)
+            .send({
+                name: "João Pedro",
+            })
+            .expect(200);
 
-    assert.equal(response.body.email, client.email);
+        assert.equal(response.body.name, "João Pedro");
 
-  });
+        assert.equal(response.body.idClient, created.body.idClient);
+    });
 
-  it("should update client", async () => {
+    it("should delete client", async () => {
+        const client = makeClientData();
 
-    const client = makeClientData();
+        const created = await request(app).post("/client").send(client);
 
-    const created = await request(app)
-      .post("/client")
-      .send(client);
+        await request(app).delete(`/client/${created.body.idClient}`).expect(204);
 
-    const response = await request(app)
-      .patch(`/client/${created.body.idClient}`)
-      .send({
-        name: "João Pedro"
-      })
-      .expect(200);
-
-    assert.equal(response.body.name, "João Pedro");
-
-    assert.equal(response.body.idClient, created.body.idClient);
-
-  });
-
-  it("should delete client", async () => {
-
-    const client = makeClientData();
-
-    const created = await request(app)
-      .post("/client")
-      .send(client);
-
-    await request(app)
-      .delete(`/client/${created.body.idClient}`)
-      .expect(204);
-
-    //await request(app)
-    //.get(`/client/${created.body.idClient}`)
-    //.expect(404);
-
-  });
-
-})
+        //await request(app)
+        //.get(`/client/${created.body.idClient}`)
+        //.expect(404);
+    });
+});

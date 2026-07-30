@@ -1,12 +1,8 @@
 import express from "express";
 import { TheatreController } from "../controllers/TheatreController";
 
-export default function theatresRoutes(
-    controller: TheatreController
-
-) {
+export default function theatresRoutes(controller: TheatreController) {
     const router = express.Router();
-
 
     router.post("/", controller.create.bind(controller));
 
@@ -18,7 +14,7 @@ export default function theatresRoutes(
 
     //router.get("/nearby");
     //router.patch("/:theatreId");//
-    
+
     // rooms dentro do theatre
     //router.post("/:theatreId/rooms");
     //router.get("/:theatreId/rooms");

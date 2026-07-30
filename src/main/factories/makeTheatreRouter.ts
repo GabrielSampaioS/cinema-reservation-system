@@ -19,8 +19,8 @@ export function makeTheatreRouter() {
         new GetTheatreByIdUseCase(repository),
         new UpdateTheatreUseCase(repository),
         new DeleteTheatreUseCase(repository),
-        new GetNearbyTheatresUseCase(repository)
+        new GetNearbyTheatresUseCase(repository),
     );
 
-    return theatresRoutes(theatreController)
+    return theatresRoutes(theatreController);
 }

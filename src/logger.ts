@@ -1,52 +1,39 @@
 import pino from "pino";
 
-//transporte 
+//transporte
 // 1 Terminal
 // 2  Arquivo
 
-function createLogger(
-    level: string,
-    file: string
-) {
+function createLogger(level: string, file: string) {
     const transport = pino.transport({
-        targets: [{
-            target: "pino-pretty",
-            level: level,
-            options: {
-                colorize: true
-            }
-        }, {
-            target: "pino/file",
-            level,
-            options: {
-                destination: file,
-                mkdir: true
-            }
-        }
-        ]
-    })
+        targets: [
+            {
+                target: "pino-pretty",
+                level: level,
+                options: {
+                    colorize: true,
+                },
+            },
+            {
+                target: "pino/file",
+                level,
+                options: {
+                    destination: file,
+                    mkdir: true,
+                },
+            },
+        ],
+    });
 
     return pino(
         {
             timestamp: pino.stdTimeFunctions.isoTime,
-            redact: [
-                "password",
-                "token","passwordHash",
-                "req.headers.authorization"
-            ]
+            redact: ["password", "token", "passwordHash", "req.headers.authorization"],
         },
-        transport
+        transport,
     );
 }
 
-export const applicationLogger = createLogger(
-    "info",
-    "logs/application.log"
-)
+export const applicationLogger = createLogger("info", "logs/application.log");
 
-
-export const securityLogger = createLogger(
-    "warn",
-    "logs/security.log"
-);
-
+export const securityLogger = createLogger("warn", "logs/security.log");

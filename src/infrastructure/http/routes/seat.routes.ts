@@ -1,10 +1,7 @@
 import express from "express";
 import { SeatController } from "../controllers/SeatController";
 
-export default function seatsRoutes(
-    controller: SeatController
-) {
-
+export default function seatsRoutes(controller: SeatController) {
     const router = express.Router();
 
     // Cria um assento para uma sala

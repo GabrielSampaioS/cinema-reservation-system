@@ -1,8 +1,7 @@
-import express  from "express";
-import {MovieController} from "../controllers/MovieController"
+import express from "express";
+import { MovieController } from "../controllers/MovieController";
 
-
-export default function moviesRoutes(controller : MovieController) {
+export default function moviesRoutes(controller: MovieController) {
     const router = express.Router();
 
     router.get("/:movieId", controller.findByMovieId.bind(controller));

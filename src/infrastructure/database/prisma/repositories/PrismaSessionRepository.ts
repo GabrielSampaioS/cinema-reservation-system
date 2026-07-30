@@ -6,85 +6,55 @@ import { db } from "../db";
 
 import { Session } from "../../../../generated/prisma/client";
 
-
 export class PrismaSessionRepository implements SessionRepository {
-
-
-    async create(
-        data: CreateSessionDTO
-    ): Promise<Session> {
-
+    async create(data: CreateSessionDTO): Promise<Session> {
         return db.session.create({
-            data
+            data,
         });
     }
 
-
     async findAll(): Promise<Session[]> {
-
         return db.session.findMany();
     }
 
-
-    async findById(
-        id: number
-    ): Promise<Session | null> {
-
+    async findById(id: number): Promise<Session | null> {
         return db.session.findUnique({
             where: {
-                idSession: id
-            }
+                idSession: id,
+            },
         });
     }
 
-
-    async findAllByMovieId(
-        movieId: number
-    ): Promise<Session[]> {
-
+    async findAllByMovieId(movieId: number): Promise<Session[]> {
         return db.session.findMany({
             where: {
-                movieId
-            }
+                movieId,
+            },
         });
     }
 
-
-    async findAllByRoomId(
-        roomId: number
-    ): Promise<Session[]> {
-
+    async findAllByRoomId(roomId: number): Promise<Session[]> {
         return db.session.findMany({
             where: {
-                roomId
-            }
+                roomId,
+            },
         });
     }
 
-
-    async update(
-        id: number,
-        data: UpdateSessionDTO
-    ): Promise<Session> {
-
+    async update(id: number, data: UpdateSessionDTO): Promise<Session> {
         return db.session.update({
             where: {
-                idSession: id
+                idSession: id,
             },
-            data
+            data,
         });
     }
 
-
-    async delete(
-        id: number
-    ): Promise<void> {
-
+    async delete(id: number): Promise<void> {
         await db.session.delete({
             where: {
-                idSession: id
-            }
+                idSession: id,
+            },
         });
     }
-
 }

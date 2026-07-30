@@ -1,5 +1,5 @@
 export interface CreateClientDTO {
-    name: string,
+    name: string;
     passwordHash: string;
     email: string;
 }

@@ -1,2 +1,1 @@
-export interface UpdateCLientDTO { 
-}
+export interface UpdateCLientDTO {}

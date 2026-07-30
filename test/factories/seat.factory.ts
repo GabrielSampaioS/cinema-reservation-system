@@ -7,4 +7,3 @@ export function makeSeatData(overrides = {}) {
         ...overrides,
     };
 }
-

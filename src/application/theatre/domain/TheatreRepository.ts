@@ -3,19 +3,15 @@ import { CreateTheatreDTO } from "../dto/CreateTheatreDTO";
 import { UpdateTheatreDTO } from "../dto/UpdateTheatreDTO";
 
 export interface TheatreRepository {
-  create(data: CreateTheatreDTO): Promise<Theatre>;
+    create(data: CreateTheatreDTO): Promise<Theatre>;
 
-  findAll(): Promise<Theatre[]>;
+    findAll(): Promise<Theatre[]>;
 
-  findById(id: number): Promise<Theatre | null>;
+    findById(id: number): Promise<Theatre | null>;
 
-  update(id: number, data: UpdateTheatreDTO): Promise<Theatre>;
+    update(id: number, data: UpdateTheatreDTO): Promise<Theatre>;
 
-  delete(id: number): Promise<void>;
+    delete(id: number): Promise<void>;
 
-  findNearby(
-    latitude: number,
-    longitude: number,
-    radiusInKm?: number
-  ): Promise<Theatre[]>;
+    findNearby(latitude: number, longitude: number, radiusInKm?: number): Promise<Theatre[]>;
 }

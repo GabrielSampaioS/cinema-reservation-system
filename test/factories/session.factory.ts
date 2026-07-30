@@ -1,12 +1,9 @@
-export function makeSessionData(overrides = {}
-) {
-
+export function makeSessionData(overrides = {}) {
     return {
-        movieId : 1,
-        roomId : 1 ,
+        movieId: 1,
+        roomId: 1,
         startTime: new Date("2026-07-20T19:00:00"),
-        price : 10,
+        price: 10,
         ...overrides,
     };
-
 }

@@ -1,6 +1,6 @@
 import { PrismaMovierepository } from "../../infrastructure/database/prisma/repositories/PrismaMovieRepository";
 
-import { MovieController } from "../../infrastructure/http/controllers/MovieController"
+import { MovieController } from "../../infrastructure/http/controllers/MovieController";
 
 import { CreatemovieUseCase } from "../../application/movie/use-case/CreateMovieUseCase";
 import { DeleteMovieUseCase } from "../../application/movie/use-case/DeleteMovieUseCase";
@@ -19,5 +19,4 @@ export function makeMovieRouter() {
     );
 
     return moviesRoutes(movieController);
-
 }

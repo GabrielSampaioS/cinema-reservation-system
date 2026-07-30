@@ -1,4 +1,4 @@
-import { PrismaBookingRepository } from "../../infrastructure/database/prisma/repositories/PrismaBookingRepository"
+import { PrismaBookingRepository } from "../../infrastructure/database/prisma/repositories/PrismaBookingRepository";
 
 import { BookingController } from "../../infrastructure/http/controllers/BookingController";
 
@@ -13,7 +13,6 @@ import { UpdateBookingUseCase } from "../../application/booking/use-case/UpdateB
 //Retornar a router ao invez do controller
 import bookingRoutes from "../../infrastructure/http/routes/booking.routes";
 
-
 export function makeBookingRouter() {
     const repository = new PrismaBookingRepository();
 
@@ -25,8 +24,6 @@ export function makeBookingRouter() {
         new DeleteBookingUseCase(repository),
         new GetBookingsByClientIdUseCase(repository),
         new GetBookingsBySessionIdUseCase(repository),
-
     );
     return bookingRoutes(bookingController);
-
 }

@@ -2,7 +2,6 @@ import express from "express";
 import { ClientController } from "../controllers/ClientController";
 
 export default function clientsRoutes(controller: ClientController) {
-
     const router = express.Router();
 
     router.post("/", controller.create.bind(controller));
@@ -15,8 +14,8 @@ export default function clientsRoutes(controller: ClientController) {
 
     // Reservas do cliente
     //router.get(
-      //  "/:clientId/bookings",
-        //controller.findBookings.bind(controller)
+    //  "/:clientId/bookings",
+    //controller.findBookings.bind(controller)
     //);
 
     return router;

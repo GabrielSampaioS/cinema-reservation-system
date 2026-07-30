@@ -9,10 +9,7 @@ export interface RoomRepository {
 
     findAllByTheatreId(theatreId: number): Promise<Room[]>;
 
-    findByName(
-        theatreId: number,
-        name: string
-    ): Promise<Room | null>;
+    findByName(theatreId: number, name: string): Promise<Room | null>;
 
     exists(id: number): Promise<boolean>;
 

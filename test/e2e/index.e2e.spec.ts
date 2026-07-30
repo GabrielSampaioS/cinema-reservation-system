@@ -13,8 +13,6 @@ after(async () => {
     await disconnectDatabase();
 });
 
-
-
 import "./client.e2e";
 import "./room.e2e";
 import "./seat.e2e";

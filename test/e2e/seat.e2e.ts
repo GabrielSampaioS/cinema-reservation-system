@@ -5,33 +5,24 @@ import request from "supertest";
 import { app } from "../setup/app";
 import { makeTheatreData } from "../factories/theatre.factory";
 import { makeRoomData } from "../factories/room.factory";
-import { makeSeatData } from "../factories/seat.factory"
+import { makeSeatData } from "../factories/seat.factory";
 
 describe("Seat E2E", () => {
-
     async function createRoom() {
-
         const theatre = makeTheatreData();
 
-        const createdTheatre = await request(app)
-            .post("/theatre")
-            .send(theatre);
-
+        const createdTheatre = await request(app).post("/theatre").send(theatre);
 
         const room = makeRoomData({
-            theatreId: createdTheatre.body.idTheatre
+            theatreId: createdTheatre.body.idTheatre,
         });
 
-        const createdRoom = await request(app)
-            .post("/room")
-            .send(room);
+        const createdRoom = await request(app).post("/room").send(room);
 
         return createdRoom.body.idRoom;
-
     }
 
     it("should create a seat inside a room", async () => {
-
         const roomId = await createRoom();
 
         const seat = makeSeatData({ roomId: roomId });
@@ -44,17 +35,9 @@ describe("Seat E2E", () => {
 
         assert.ok(response.body.idSeat);
 
-        assert.equal(
-            response.body.row,
-            seat.row
-        );
+        assert.equal(response.body.row, seat.row);
 
-
-        assert.equal(
-            response.body.number,
-            seat.number
-        );
-
+        assert.equal(response.body.number, seat.number);
     });
 
     it("should list seats", async () => {
@@ -62,110 +45,55 @@ describe("Seat E2E", () => {
 
         const seat = makeSeatData({ roomId: roomId });
 
-       await request(app)
-            .post(`/seat/rooms/${roomId}/seats`)
-            .send(seat).expect(201);
+        await request(app).post(`/seat/rooms/${roomId}/seats`).send(seat).expect(201);
 
-        const response = await (request(app))
-            .get(`/seat/rooms/${roomId}/seats/`)
-            .expect(200)
+        const response = await request(app).get(`/seat/rooms/${roomId}/seats/`).expect(200);
 
         assert.ok(Array.isArray(response.body));
 
-        assert.equal(
-            response.body.length,
-            1
-        );
+        assert.equal(response.body.length, 1);
 
-        assert.equal(
-            response.body[0].row,
-            seat.row
-        );
-
-
+        assert.equal(response.body[0].row, seat.row);
     });
 
     it("should find seat by id", async () => {
-
         const roomId = await createRoom();
 
         const seat = makeSeatData();
 
+        const created = await request(app).post(`/seat/rooms/${roomId}/seats`).send(seat);
 
-        const created = await request(app)
-            .post(`/seat/rooms/${roomId}/seats`)
-            .send(seat);
+        const response = await request(app).get(`/seat/${created.body.idSeat}`).expect(200);
 
-
-        const response = await request(app)
-            .get(`/seat/${created.body.idSeat}`)
-            .expect(200);
-
-        assert.equal(
-            response.body.idSeat,
-            created.body.idSeat
-        );
-
-
+        assert.equal(response.body.idSeat, created.body.idSeat);
     });
 
     it("should update seat", async () => {
-
         const roomId = await createRoom();
 
         const seat = makeSeatData({ roomId: roomId });
 
-        const created = await request(app)
-            .post(`/seat/rooms/${roomId}/seats`)
-            .send(seat);
-
+        const created = await request(app).post(`/seat/rooms/${roomId}/seats`).send(seat);
 
         const response = await request(app)
             .patch(`/seat/${created.body.idSeat}`)
             .send({
-                row: 2
+                row: 2,
             })
             .expect(200);
 
+        assert.equal(response.body.row, 2);
 
-
-        assert.equal(
-            response.body.row,
-            2
-        );
-
-
-        assert.equal(
-            response.body.idSeat,
-            created.body.idSeat
-        );
-
-
+        assert.equal(response.body.idSeat, created.body.idSeat);
     });
 
     it("should delete seat", async () => {
-
-
         const roomId = await createRoom();
-
 
         const seat = makeSeatData({ roomId: roomId });
 
+        const created = await request(app).post(`/seat/rooms/${roomId}/seats`).send(seat);
 
-
-        const created = await request(app)
-            .post(`/seat/rooms/${roomId}/seats`)
-            .send(seat);
-
-
-
-        await request(app)
-            .delete(`/seat/${created.body.idSeat}`)
-            .expect(204);
-
-
+        await request(app).delete(`/seat/${created.body.idSeat}`).expect(204);
     });
-
-
 });
-

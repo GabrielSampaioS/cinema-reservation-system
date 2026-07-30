@@ -1,9 +1,7 @@
 import express from "express";
 import { BookingController } from "../controllers/BookingController";
 
-
-export default function bookingsRoutes(controller: BookingController){
-
+export default function bookingsRoutes(controller: BookingController) {
     const router = express.Router();
 
     router.post("/", controller.create.bind(controller));
@@ -23,5 +21,4 @@ export default function bookingsRoutes(controller: BookingController){
     router.get("/session/:sessionId", controller.findBySessionId.bind(controller));
 
     return router;
-
 }

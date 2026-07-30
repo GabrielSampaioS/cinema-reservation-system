@@ -1,3 +1,3 @@
 export interface UpdateSeatDTO {
-    number: number
+    number: number;
 }

@@ -7,26 +7,15 @@ import { Booking } from "../../../../generated/prisma/client";
 
 import { db } from "../db";
 
-
-
-export class PrismaBookingRepository
-    implements BookingRepository {
-
+export class PrismaBookingRepository implements BookingRepository {
     //todo: criar um trataamento de erros em todos os repo
-    async create(
-        data: CreateBookingDTO
-    ): Promise<Booking> {
-
-
+    async create(data: CreateBookingDTO): Promise<Booking> {
         try {
-
             const booking = await db.booking.create({
-                data
+                data,
             });
             return booking;
-
         } catch (error) {
-
             console.error(error);
 
             throw error;
@@ -34,64 +23,47 @@ export class PrismaBookingRepository
     }
 
     async findAll() {
-
         return db.booking.findMany();
-
     }
 
     async findById(id: number) {
-
         return db.booking.findUnique({
             where: {
-                idBooking: id
-            }
+                idBooking: id,
+            },
         });
-
     }
 
     async findAllByClientId(clientId: number) {
-
         return db.booking.findMany({
             where: {
-                clientId
-            }
+                clientId,
+            },
         });
-
     }
 
     async findAllBySessionId(sessionId: number) {
-
         return db.booking.findMany({
             where: {
-                sessionId
-            }
+                sessionId,
+            },
         });
-
     }
 
-    async update(
-        id: number,
-        data: UpdateBookingDTO
-    ) {
-
+    async update(id: number, data: UpdateBookingDTO) {
         return db.booking.update({
             where: {
-                idBooking: id
+                idBooking: id,
             },
-            data
+            data,
         });
-
     }
 
     async delete(id: number) {
-
         await db.booking.delete({
             where: {
-                idBooking: id
-            }
+                idBooking: id,
+            },
         });
-
     }
-
-
 }

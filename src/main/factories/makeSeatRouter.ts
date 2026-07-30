@@ -1,8 +1,8 @@
 import { PrismaSeatRepository } from "../../infrastructure/database/prisma/repositories/PrismaSeatRepository";
 
-import {SeatController} from "../../infrastructure/http/controllers/SeatController"
+import { SeatController } from "../../infrastructure/http/controllers/SeatController";
 
-import { CreateSeatUseCase   } from "../../application/seat/use-case/CreateSeatUseCase";
+import { CreateSeatUseCase } from "../../application/seat/use-case/CreateSeatUseCase";
 import { DeleteSeatUseCase } from "../../application/seat/use-case/DeleteSeatUseCase";
 import { GetSeatByIdUseCase } from "../../application/seat/use-case/GetSeatByIdUseCase";
 import { GetSeatsByRoomUseCase } from "../../application/seat/use-case/GetSeatsByRoomUseCase";
@@ -20,6 +20,5 @@ export function makeSeatRouter() {
         new UpdateSeatUseCase(repository),
     );
 
-
-    return seatsRoutes(seatController)
+    return seatsRoutes(seatController);
 }

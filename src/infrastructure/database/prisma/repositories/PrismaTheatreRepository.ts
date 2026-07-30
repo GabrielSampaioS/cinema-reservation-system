@@ -1,22 +1,17 @@
-import { TheatreRepository } from "../../../../application/theatre/domain/TheatreRepository"
-import { CreateTheatreDTO } from "../../../../application/theatre/dto/CreateTheatreDTO"
-import { UpdateTheatreDTO } from "../../../../application/theatre/dto/UpdateTheatreDTO"
-import { db } from "../db"
+import { TheatreRepository } from "../../../../application/theatre/domain/TheatreRepository";
+import { CreateTheatreDTO } from "../../../../application/theatre/dto/CreateTheatreDTO";
+import { UpdateTheatreDTO } from "../../../../application/theatre/dto/UpdateTheatreDTO";
+import { db } from "../db";
 import { Theatre } from "../../../../generated/prisma/client";
-
-
 
 export class PrismaTheatreRepository implements TheatreRepository {
     findNearby(latitude: number, longitude: number, radiusInKm?: number): Promise<Theatre[]> {
         throw new Error("Method not implemented.");
     }
     async create(data: CreateTheatreDTO) {
-
-
         const result = await db.theatre.create({
             data,
         });
-
 
         return result;
     }
@@ -49,5 +44,4 @@ export class PrismaTheatreRepository implements TheatreRepository {
             },
         });
     }
-
 }

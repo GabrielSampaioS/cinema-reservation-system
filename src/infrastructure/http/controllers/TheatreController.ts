@@ -15,10 +15,9 @@ export class TheatreController {
         private readonly updateTheatreUseCase: UpdateTheatreUseCase,
         private readonly deleteTheatreUseCase: DeleteTheatreUseCase,
         private readonly getNearbyTheatresUseCase: GetNearbyTheatresUseCase,
-    ) { }
+    ) {}
 
     async create(req: Request, res: Response) {
-
         const theatre = await this.createTheatreUseCase.execute(req.body);
 
         return res.status(201).json(theatre);
@@ -41,10 +40,7 @@ export class TheatreController {
     async update(req: Request, res: Response) {
         const { theatreId } = req.params;
 
-        const theatre = await this.updateTheatreUseCase.execute(
-            Number(theatreId),
-            req.body
-        );
+        const theatre = await this.updateTheatreUseCase.execute(Number(theatreId), req.body);
 
         return res.status(200).json(theatre);
     }
@@ -61,13 +57,8 @@ export class TheatreController {
         const latitude = Number(req.query.latitude);
         const longitude = Number(req.query.longitude);
 
-        const theatres = await this.getNearbyTheatresUseCase.execute(
-            latitude,
-            longitude
-        );
+        const theatres = await this.getNearbyTheatresUseCase.execute(latitude, longitude);
 
         return res.status(200).json(theatres);
     }
-
-
 }

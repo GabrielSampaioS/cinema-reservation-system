@@ -1,6 +1,5 @@
-export interface UpdateMovieDTO { 
+export interface UpdateMovieDTO {
     title: string;
     description: string;
     duration: number;
 }
-

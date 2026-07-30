@@ -1,5 +1,4 @@
 export interface CreateBookingDTO {
-
     clientId: number;
 
     sessionId: number;
@@ -9,5 +8,4 @@ export interface CreateBookingDTO {
     statusId: number;
 
     expiresAt: Date;
-
 }

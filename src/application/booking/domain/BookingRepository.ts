@@ -3,7 +3,6 @@ import { Booking } from "@prisma/client";
 import { CreateBookingDTO } from "../dto/CreateBookingDTO";
 import { UpdateBookingDTO } from "../dto/UpdateBookingDTO";
 
-
 export interface BookingRepository {
     create(data: CreateBookingDTO): Promise<Booking>;
 
@@ -15,8 +14,7 @@ export interface BookingRepository {
 
     findAllBySessionId(sessionId: number): Promise<Booking[]>;
 
-    update(id: number,data: UpdateBookingDTO): Promise<Booking>;
+    update(id: number, data: UpdateBookingDTO): Promise<Booking>;
 
     delete(id: number): Promise<void>;
-
 }

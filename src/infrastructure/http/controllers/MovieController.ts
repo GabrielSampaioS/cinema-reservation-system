@@ -1,6 +1,5 @@
 import { Request, Response } from "express";
 
-
 import { CreatemovieUseCase } from "../../../application/movie/use-case/CreateMovieUseCase";
 import { DeleteMovieUseCase } from "../../../application/movie/use-case/DeleteMovieUseCase";
 import { GetMovieByIdUseCase } from "../../../application/movie/use-case/GetMovieByIdUseCase";
@@ -12,10 +11,10 @@ export class MovieController {
         private readonly deleteMovieUseCase: DeleteMovieUseCase,
         private readonly getMovieByIdUseCase: GetMovieByIdUseCase,
         private readonly updateMovieUseCase: UpdateMovieUseCase,
-    ) { }
+    ) {}
 
     async create(req: Request, res: Response) {
-        const result = await this.createmovieUseCase.execute(req.body)
+        const result = await this.createmovieUseCase.execute(req.body);
         return res.status(201).json(result);
     }
 
@@ -30,10 +29,7 @@ export class MovieController {
     async update(req: Request, res: Response) {
         const { movieId } = req.params;
 
-        const result = await this.updateMovieUseCase.execute(
-            Number(movieId),
-            req.body
-        );
+        const result = await this.updateMovieUseCase.execute(Number(movieId), req.body);
 
         return res.status(200).json(result);
     }
@@ -45,5 +41,4 @@ export class MovieController {
 
         return res.sendStatus(204);
     }
-
 }

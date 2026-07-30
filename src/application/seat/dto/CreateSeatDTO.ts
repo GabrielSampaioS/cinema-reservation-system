@@ -1,5 +1,5 @@
 export interface CreateSeatDTO {
-    roomId: number,
-    row: number
-    number: number
+    roomId: number;
+    row: number;
+    number: number;
 }

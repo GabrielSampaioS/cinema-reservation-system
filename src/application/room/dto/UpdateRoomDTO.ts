@@ -1,3 +1,3 @@
-export interface UpdateRoomDTO { 
-    name?: string; 
+export interface UpdateRoomDTO {
+    name?: string;
 }

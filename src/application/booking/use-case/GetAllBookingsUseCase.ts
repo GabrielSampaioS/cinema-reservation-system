@@ -1,16 +1,9 @@
 import { BookingRepository } from "../domain/BookingRepository";
 
 export class GetAllBookingsUseCase {
+    constructor(private repository: BookingRepository) {}
 
-constructor(
- private repository: BookingRepository
-){}
-
-
-async execute(){
-
- return this.repository.findAll();
-
-}
-
+    async execute() {
+        return this.repository.findAll();
+    }
 }

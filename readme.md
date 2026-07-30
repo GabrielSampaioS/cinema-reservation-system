@@ -78,7 +78,7 @@ Exemplo:
 
 ```json
 {
-  "status": "CONFIRMED"
+    "status": "CONFIRMED"
 }
 ```
 

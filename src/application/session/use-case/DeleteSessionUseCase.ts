@@ -1,23 +1,16 @@
 import { SessionRepository } from "../domain/SessionRepository";
 
 export class DeleteSessionUseCase {
+    constructor(private repository: SessionRepository) {}
 
-    constructor(
-        private repository: SessionRepository
-    ) {}
-
-    async execute(id:number){
-
+    async execute(id: number) {
         const session = await this.repository.findById(id);
 
-        if(!session){
+        if (!session) {
             throw new Error("Session not found");
         }
 
-
         const result = await this.repository.delete(id);
-        return result
-
-
+        return result;
     }
 }

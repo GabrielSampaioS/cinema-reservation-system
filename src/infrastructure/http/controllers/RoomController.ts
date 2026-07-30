@@ -11,16 +11,13 @@ export class RoomController {
         private readonly deleteRoomUseCase: DeleteRoomUseCase,
         private readonly getRoomByIdUseCase: GetRoomByIdUseCase,
         private readonly updateRoomUseCase: UpdateRoomUseCase,
-    ) { }
+    ) {}
 
     async create(req: Request, res: Response) {
-
         const result = await this.createRoomUseCase.execute(req.body);
 
         return res.status(201).json(result);
-
     }
-
 
     async findByRoomId(req: Request, res: Response) {
         const { roomId } = req.params;
@@ -33,13 +30,9 @@ export class RoomController {
     async update(req: Request, res: Response) {
         const { roomId } = req.params;
 
-        const result = await this.updateRoomUseCase.execute(
-            Number(roomId),
-            req.body
-        );
+        const result = await this.updateRoomUseCase.execute(Number(roomId), req.body);
 
         return res.status(200).json(result);
-
     }
 
     async delete(req: Request, res: Response) {
@@ -49,5 +42,4 @@ export class RoomController {
 
         return res.sendStatus(204);
     }
-
 }
