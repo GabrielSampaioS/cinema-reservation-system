@@ -6,17 +6,26 @@ import { app } from "../setup/app";
 import { makeClientData } from "../factories/client.factory";
 
 describe("Client E2E", () => {
-    it("should create a client", async () => {
+    it("should return the created client without exposing sensitive fields", async () => {
         const client = makeClientData();
 
         const response = await request(app).post("/client").send(client).expect(201);
 
-        assert.ok(response.body.idClient);
-
+        assert.equal(typeof response.body.idClient, "number");
         assert.equal(response.body.name, client.name);
         assert.equal(response.body.email, client.email);
 
         assert.ok(response.body.createdAt);
+
+        assert.ok(!("passwordHash" in response.body));
+        assert.ok(!("password" in response.body));
+
+        assert.deepStrictEqual(response.body, {
+            idClient: response.body.idClient,
+            name: client.name,
+            email: client.email,
+            createdAt: response.body.createdAt,
+        });
     });
 
     it("should find client by id", async () => {

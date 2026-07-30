@@ -44,8 +44,8 @@ export default function criarApp({
     const app = express();
     dotenv.config();
 
-    app.use(loggerHttp);
-    app.use(loggerSecurityMiddleware);
+    //app.use(loggerHttp);
+    //app.use(loggerSecurityMiddleware);
     app.use(cors());
     app.use(express.json());
 

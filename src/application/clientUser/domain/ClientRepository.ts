@@ -1,13 +1,14 @@
 import { Client } from "@prisma/client";
 import { CreateClientDTO } from "../dto/CreateClientDTO";
-import { UpdateCLientDTO } from "../dto/UpdateClientDTO";
+import { ClientResponseDTO } from "../dto/ClientResponseDTO";
+import { UpdateClientDTO } from "../dto/UpdateClientDTO";
 
 export interface ClientRepository {
-    create(data: CreateClientDTO): Promise<Client>;
+    create(data: CreateClientDTO): Promise<ClientResponseDTO>;
 
     findById(id: number): Promise<Client | null>;
 
-    update(id: number, data: UpdateCLientDTO): Promise<Client>;
+    update(id: number, data: UpdateClientDTO): Promise<Client>;
 
     delete(id: number): Promise<void>;
 
