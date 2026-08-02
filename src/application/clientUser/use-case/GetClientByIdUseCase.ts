@@ -1,6 +1,7 @@
 import { NotFoundError } from "../../../middlewares/MiddlewareError";
 import { ClientRepository } from "../domain/ClientRepository";
 import { ClientResponseDTO } from "../dto/ClientResponseDTO";
+import { ClientMapper } from "../mapper/ClientMapper";
 
 export class GetClientByIdClientUseCase {
     constructor(private readonly clientRepository: ClientRepository) {}
@@ -10,11 +11,8 @@ export class GetClientByIdClientUseCase {
         if (!result) {
             throw new NotFoundError("Usuário não localaizado", "USER_NOT_FOUND");
         }
-        return {
-            idClient: result.idClient,
-            name: result.name,
-            email: result.email,
-            createdAt: result.createdAt,
-        };
+        const clientMapper = new ClientMapper();
+
+        return clientMapper.toDTO(result);
     }
 }

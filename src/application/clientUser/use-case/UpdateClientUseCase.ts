@@ -2,6 +2,7 @@ import { NotFoundError } from "../../../middlewares/MiddlewareError";
 import { ClientRepository } from "../domain/ClientRepository";
 import { ClientResponseDTO } from "../dto/ClientResponseDTO";
 import { UpdateClientDTO } from "../dto/UpdateClientDTO";
+import { ClientMapper } from "../mapper/ClientMapper";
 
 export class UpdateClientUseCase {
     constructor(private readonly clientRepository: ClientRepository) {}
@@ -13,11 +14,8 @@ export class UpdateClientUseCase {
         }
         const result = await this.clientRepository.update(idClient, data);
 
-        return {
-            idClient: result.idClient,
-            name: result.name,
-            email: result.email,
-            createdAt: result.createdAt,
-        };
+        const clientMapper = new ClientMapper();
+
+        return clientMapper.toDTO(result);
     }
 }

@@ -1,15 +1,18 @@
 import { BookingRepository } from "../domain/BookingRepository";
+import { BookingResponseDTO } from "../dto/BookingResponseDTO";
+import { BookingMapper } from "../mapper/BoolingMapper";
 
 export class GetBookingByIdUseCase {
     constructor(private repository: BookingRepository) {}
 
-    async execute(id: number) {
-        const booking = await this.repository.findById(id);
+    async execute(id: number): Promise<BookingResponseDTO> {
+        const result = await this.repository.findById(id);
 
-        if (!booking) {
+        if (!result) {
             throw new Error("Booking not found");
         }
 
-        return booking;
+        const bookingMapper = new BookingMapper();
+        return bookingMapper.toDTO(result);
     }
 }

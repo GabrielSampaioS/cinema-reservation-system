@@ -8,6 +8,10 @@ import { DeleteBookingUseCase } from "../../../application/booking/use-case/Dele
 
 import { GetBookingsByClientIdUseCase } from "../../../application/booking/use-case/GetBookingsByClientIdUseCase";
 import { GetBookingsBySessionIdUseCase } from "../../../application/booking/use-case/GetBookingsBySessionIdUseCase";
+import { CreateBookingDTO } from "../../../application/booking/dto/CreateBookingDTO";
+
+import { BookingResponseDTO } from "../../../application/booking/dto/BookingResponseDTO";
+import { UpdateBookingDTO } from "../../../application/booking/dto/UpdateBookingDTO";
 
 export class BookingController {
     constructor(
@@ -20,19 +24,19 @@ export class BookingController {
         private readonly getBookingsBySessionIdUseCase: GetBookingsBySessionIdUseCase,
     ) {}
 
-    async create(req: Request, res: Response) {
+    async create(req: Request<{}, {}, CreateBookingDTO>, res: Response<BookingResponseDTO>) {
         const booking = await this.createBookingUseCase.execute(req.body);
 
         return res.status(201).json(booking);
     }
 
-    async findAll(req: Request, res: Response) {
+    async findAll(req: Request<{}, {}, CreateBookingDTO>, res: Response<BookingResponseDTO[]>) {
         const bookings = await this.getAllBookingsUseCase.execute();
 
         return res.status(200).json(bookings);
     }
 
-    async findById(req: Request, res: Response) {
+    async findById(req: Request<{ bookingId: string }, {}, {}>, res: Response<BookingResponseDTO>) {
         const { bookingId } = req.params;
 
         const booking = await this.getBookingByIdUseCase.execute(Number(bookingId));
@@ -40,7 +44,10 @@ export class BookingController {
         return res.status(200).json(booking);
     }
 
-    async update(req: Request, res: Response) {
+    async update(
+        req: Request<{ bookingId: string }, {}, UpdateBookingDTO>,
+        res: Response<BookingResponseDTO>,
+    ) {
         const { bookingId } = req.params;
 
         const booking = await this.updateBookingUseCase.execute(Number(bookingId), req.body);
@@ -48,7 +55,7 @@ export class BookingController {
         return res.status(200).json(booking);
     }
 
-    async delete(req: Request, res: Response) {
+    async delete(req: Request<{ bookingId: string }>, res: Response) {
         const { bookingId } = req.params;
 
         await this.deleteBookingUseCase.execute(Number(bookingId));
@@ -56,7 +63,7 @@ export class BookingController {
         return res.sendStatus(204);
     }
 
-    async findByClientId(req: Request, res: Response) {
+    async findByClientId(req: Request<{ clientId: string }>, res: Response<BookingResponseDTO[]>) {
         const { clientId } = req.params;
 
         const bookings = await this.getBookingsByClientIdUseCase.execute(Number(clientId));
@@ -64,7 +71,7 @@ export class BookingController {
         return res.status(200).json(bookings);
     }
 
-    async findBySessionId(req: Request, res: Response) {
+    async findBySessionId(req: Request, res: Response<BookingResponseDTO[]>) {
         const { sessionId } = req.params;
 
         const bookings = await this.getBookingsBySessionIdUseCase.execute(Number(sessionId));

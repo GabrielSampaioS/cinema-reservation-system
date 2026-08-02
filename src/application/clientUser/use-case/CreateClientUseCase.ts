@@ -2,6 +2,7 @@ import { ConflictError } from "../../../middlewares/MiddlewareError";
 import { ClientRepository } from "../domain/ClientRepository";
 import { ClientResponseDTO } from "../dto/ClientResponseDTO";
 import { CreateClientDTO } from "../dto/CreateClientDTO";
+import { ClientMapper } from "../mapper/ClientMapper";
 
 export class CreateClientUseCase {
     constructor(private readonly clientRepository: ClientRepository) {}
@@ -15,12 +16,9 @@ export class CreateClientUseCase {
         }
         const result = await this.clientRepository.create(data);
 
-        //todo: Criar um Mapper
-        return {
-            idClient: result.idClient,
-            name: result.name,
-            email: result.email,
-            createdAt: result.createdAt,
-        };
+        //TODO: injetar dependedncia ao invez de instanciar a class
+        const clientMapper = new ClientMapper();
+
+        return clientMapper.toDTO(result);
     }
 }

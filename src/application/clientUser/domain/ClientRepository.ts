@@ -4,7 +4,7 @@ import { ClientResponseDTO } from "../dto/ClientResponseDTO";
 import { UpdateClientDTO } from "../dto/UpdateClientDTO";
 
 export interface ClientRepository {
-    create(data: CreateClientDTO): Promise<ClientResponseDTO>;
+    create(data: CreateClientDTO): Promise<Client>;
 
     findById(id: number): Promise<Client | null>;
 
