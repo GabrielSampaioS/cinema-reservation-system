@@ -18,6 +18,8 @@ describe("Movie E2E", () => {
 
         assert.equal(response.body.description, movie.description);
 
+        assert.equal(response.body.duration, movie.duration);
+
         assert.ok(response.body.createdAt);
     });
 

@@ -10,6 +10,7 @@ export class BookingMapper extends BaseMapper<Booking, BookingResponseDTO> {
             idSeat: booking.seatId,
             createdAt: booking.createdAt,
             statusId: booking.statusId,
+            idSession: booking.sessionId,
         };
     }
 }

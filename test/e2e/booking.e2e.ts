@@ -83,20 +83,20 @@ describe("Booking E2E", () => {
     it("should list bookings by client", async () => {
         const booking = await createBooking();
 
-        const response = await request(app).get(`/booking/client/${booking.clientId}`).expect(200);
+        const response = await request(app).get(`/booking/client/${booking.idClient}`).expect(200);
 
         assert.ok(Array.isArray(response.body));
 
         assert.equal(response.body.length, 1);
 
-        assert.equal(response.body[0].clientId, booking.clientId);
+        assert.equal(response.body[0].idClient, booking.idClient);
     });
 
     it("should list bookings by session", async () => {
         const booking = await createBooking();
 
         const response = await request(app)
-            .get(`/booking/session/${booking.sessionId}`)
+            .get(`/booking/session/${booking.idSession}`)
             .expect(200);
 
         assert.ok(Array.isArray(response.body));

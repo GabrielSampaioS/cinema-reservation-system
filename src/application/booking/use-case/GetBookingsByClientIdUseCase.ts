@@ -7,7 +7,6 @@ export class GetBookingsByClientIdUseCase {
 
     async execute(clientId: number): Promise<BookingResponseDTO[]> {
         const result = await this.repository.findAllByClientId(clientId);
-
         const bookingMapper = new BookingMapper();
         return bookingMapper.toDTOList(result);
     }

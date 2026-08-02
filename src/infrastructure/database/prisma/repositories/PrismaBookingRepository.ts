@@ -35,17 +35,25 @@ export class PrismaBookingRepository implements BookingRepository {
     }
 
     async findAllByClientId(clientId: number) {
-        return db.booking.findMany({
-            where: {
-                clientId,
-            },
-        });
+        try {
+            const bookings = await db.booking.findMany({
+                where: {
+                    clientId: clientId,
+                },
+            });
+
+            return bookings;
+        } catch (error) {
+            console.error(error);
+
+            throw error;
+        }
     }
 
     async findAllBySessionId(sessionId: number) {
         return db.booking.findMany({
             where: {
-                sessionId,
+                sessionId: sessionId,
             },
         });
     }

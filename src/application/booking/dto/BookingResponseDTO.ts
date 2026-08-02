@@ -4,4 +4,5 @@ export interface BookingResponseDTO {
     idSeat: number;
     createdAt: Date;
     statusId: number;
+    idSession: number;
 }

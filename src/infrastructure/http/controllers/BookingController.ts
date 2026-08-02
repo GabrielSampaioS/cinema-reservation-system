@@ -71,7 +71,10 @@ export class BookingController {
         return res.status(200).json(bookings);
     }
 
-    async findBySessionId(req: Request, res: Response<BookingResponseDTO[]>) {
+    async findBySessionId(
+        req: Request<{ sessionId: string }>,
+        res: Response<BookingResponseDTO[]>,
+    ) {
         const { sessionId } = req.params;
 
         const bookings = await this.getBookingsBySessionIdUseCase.execute(Number(sessionId));
