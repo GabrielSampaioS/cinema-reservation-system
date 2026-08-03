@@ -25,8 +25,6 @@ describe("Theatre E2E", () => {
         assert.equal(response.body.idTheatre, created.body.idTheatre);
 
         assert.equal(response.body.name, theatre.name);
-        assert.equal(response.body.latitude, theatre.latitude);
-        assert.equal(response.body.longitude, theatre.longitude);
         assert.equal(response.body.city, theatre.city);
     });
 

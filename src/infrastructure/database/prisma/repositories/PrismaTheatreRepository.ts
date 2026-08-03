@@ -12,7 +12,6 @@ export class PrismaTheatreRepository implements TheatreRepository {
         const result = await db.theatre.create({
             data,
         });
-
         return result;
     }
 

@@ -6,6 +6,9 @@ import { GetTheatreByIdUseCase } from "../../../application/theatre/use-case/Get
 import { UpdateTheatreUseCase } from "../../../application/theatre/use-case/UpdateTheatreUseCase";
 import { DeleteTheatreUseCase } from "../../../application/theatre/use-case/DeleteTheatreUseCase";
 import { GetNearbyTheatresUseCase } from "../../../application/theatre/use-case/GetNearbyTheatresUseCase";
+import { CreateTheatreDTO } from "../../../application/theatre/dto/CreateTheatreDTO";
+import { TheatreResponseDTO } from "../../../application/theatre/dto/TheatreResponseDTO";
+import { UpdateTheatreDTO } from "../../../application/theatre/dto/UpdateTheatreDTO";
 
 export class TheatreController {
     constructor(
@@ -17,19 +20,19 @@ export class TheatreController {
         private readonly getNearbyTheatresUseCase: GetNearbyTheatresUseCase,
     ) {}
 
-    async create(req: Request, res: Response) {
+    async create(req: Request<{}, {}, CreateTheatreDTO>, res: Response<TheatreResponseDTO>) {
         const theatre = await this.createTheatreUseCase.execute(req.body);
 
         return res.status(201).json(theatre);
     }
 
-    async findAll(req: Request, res: Response) {
+    async findAll(req: Request, res: Response<TheatreResponseDTO[]>) {
         const theatres = await this.getAllTheatresUseCase.execute();
 
         return res.status(200).json(theatres);
     }
 
-    async findById(req: Request, res: Response) {
+    async findById(req: Request<{ theatreId: string }>, res: Response<TheatreResponseDTO>) {
         const { theatreId } = req.params;
 
         const theatre = await this.getTheatreByIdUseCase.execute(Number(theatreId));
@@ -37,7 +40,10 @@ export class TheatreController {
         return res.status(200).json(theatre);
     }
 
-    async update(req: Request, res: Response) {
+    async update(
+        req: Request<{ theatreId: string }, {}, UpdateTheatreDTO>,
+        res: Response<TheatreResponseDTO>,
+    ) {
         const { theatreId } = req.params;
 
         const theatre = await this.updateTheatreUseCase.execute(Number(theatreId), req.body);
@@ -45,7 +51,7 @@ export class TheatreController {
         return res.status(200).json(theatre);
     }
 
-    async delete(req: Request, res: Response) {
+    async delete(req: Request<{ theatreId: string }>, res: Response) {
         const { theatreId } = req.params;
 
         await this.deleteTheatreUseCase.execute(Number(theatreId));
@@ -53,7 +59,10 @@ export class TheatreController {
         return res.sendStatus(204);
     }
 
-    async nearby(req: Request, res: Response) {
+    async nearby(
+        req: Request<{ latitude: string; longitude: string }>,
+        res: Response<TheatreResponseDTO[]>,
+    ) {
         const latitude = Number(req.query.latitude);
         const longitude = Number(req.query.longitude);
 

@@ -1,4 +1,4 @@
-import { Theatre } from "@prisma/client";
+import { Theatre } from "../../../generated/prisma/client";
 import { CreateTheatreDTO } from "../dto/CreateTheatreDTO";
 import { UpdateTheatreDTO } from "../dto/UpdateTheatreDTO";
 
