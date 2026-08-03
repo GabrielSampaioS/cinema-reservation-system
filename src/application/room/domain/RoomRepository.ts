@@ -1,4 +1,4 @@
-import { Room } from "@prisma/client";
+import { Room } from "../../../generated/prisma/client";
 import { CreateRoomDTO } from "../dto/CreateRoomDTO";
 import { UpdateRoomDTO } from "../dto/UpdateRoomDTO";
 
