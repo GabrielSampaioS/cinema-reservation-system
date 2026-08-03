@@ -10,7 +10,6 @@ export class DeleteSessionUseCase {
             throw new Error("Session not found");
         }
 
-        const result = await this.repository.delete(id);
-        return result;
+        await this.repository.delete(id);
     }
 }

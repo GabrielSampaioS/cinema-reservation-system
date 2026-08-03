@@ -1,16 +1,19 @@
 import { SessionRepository } from "../domain/SessionRepository";
+import { SessionResponseDTO } from "../dto/SessionResponseDTO";
 import { UpdateSessionDTO } from "../dto/UpdateSessionDTO";
+import { SessionMapper } from "../mapper/SessionMapper";
 
 export class UpdateSessionUseCase {
     constructor(private repository: SessionRepository) {}
 
-    async execute(id: number, data: UpdateSessionDTO) {
-        const session = await this.repository.findById(id);
+    async execute(id: number, data: UpdateSessionDTO): Promise<SessionResponseDTO> {
+        const result = await this.repository.findById(id);
 
-        if (!session) {
+        if (!result) {
             throw new Error("Session not found");
         }
 
-        return this.repository.update(id, data);
+        const sessionMapper = new SessionMapper();
+        return sessionMapper.toDTO(result);
     }
 }

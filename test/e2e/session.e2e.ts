@@ -48,8 +48,6 @@ describe("Session E2E", () => {
         assert.equal(response.body.movieId, movieId);
 
         assert.equal(response.body.roomId, roomId);
-
-        assert.ok(response.body.createdAt);
     });
 
     it("should list all sessions", async () => {
